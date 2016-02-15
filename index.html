@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Angular 2 QuickStart</title>
+    <title>local maps test</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- 1. Load libraries -->
@@ -12,8 +12,20 @@
     <script src="node_modules/systemjs/dist/system.src.js"></script>
     <script src="node_modules/rxjs/bundles/Rx.js"></script>
     <script src="node_modules/angular2/bundles/angular2.dev.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.8/css/bootstrap-material-design.css" type="text/css">
+    <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrsKDKcBsPJfv5XD_V0OROqcVpNBYLf-Y&libraries=places"></script>
 
+    <!-- Material Design fonts -->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.8/css/bootstrap-material-design.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.8/css/ripples.css" type="text/css">    
+    <style>
+      input {
+        width: 400px;
+      }
+    </style>
     <!-- 2. Configure SystemJS -->
     <script>
       System.config({

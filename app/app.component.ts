@@ -1,32 +1,19 @@
 import {Component} from 'angular2/core';
+import {AutocompleteComponent} from './autocomplete.component';
 
 interface Address {
-   street: string;
+  street?: string;
+  number?: number;
+  toString(): string;
 }
 
 @Component({
-    selector: 'my-app',
-    template: `
-      <address>{{address.address}}</address>
-      <input [(ngModel)]="address.street">
-      `
+  selector: 'my-app',
+  templateUrl: 'app/templates/app.component.html',
+  directives: [AutocompleteComponent]
 })
 export class AppComponent {
-   public address : Address = {
-      street: 'Lucasbolwerk'
-   }
-   public addresses = ADDRESSES
+  public address: Address = {
+    toString: () => `${this.address.street || ''}, ${this.address.number || ''}`
+  };
 }
-
-
-var ADDRESSES : Address[] = [
-   {
-      street: 'Nobelstraat'
-   },
-   {
-      street: 'Oudegracht'
-   },
-   {
-      street: 'Leuvenplein'
-   }
-]

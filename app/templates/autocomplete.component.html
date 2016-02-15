@@ -1,0 +1,6 @@
+<input class="form-control" (keydown) = "updateSuggestions($event)" placeholder="Begin typing">
+<div>
+    <div *ngFor="#suggestion of suggestions; #i = index">
+        <div [class] = "i === selectedSuggestion ? 'selected' : ''">{{suggestion}}</div>
+    </div>
+</div>

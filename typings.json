@@ -1,0 +1,5 @@
+{
+  "ambientDependencies": {
+    "googlemaps": "github:DefinitelyTyped/DefinitelyTyped/googlemaps/google.maps.d.ts"
+  }
+}
