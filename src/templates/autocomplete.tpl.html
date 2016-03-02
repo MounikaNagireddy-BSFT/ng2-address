@@ -1,4 +1,4 @@
-<input class="form-control" (keyup)="updateSuggestions($event)" placeholder="Begin typing" [(ngModel)]="inputString">
+<input class="form-control" (keyup)="onKeyUp($event)" [attr.placeholder]="placeholder" [(ngModel)]="inputString">
 <div>
   <div *ngFor="#suggestion of suggestions; #i = index">
     <div [class]="i === selectedSuggestion ? 'selected' : ''">{{suggestion}}</div>

@@ -8,9 +8,9 @@
 
     <form class="form-horizontal">
       <div class="form-group">
-        <label for="input-address" class="control-label col-md-2">Adres</label>
+        <label for="input-address" class="control-label col-md-2">Waar wil je heen?</label>
         <div class="col-md-10">
-          <address-autocomplete [(address)]="address" (addressSelected)="onSelectAddress($event)"></address-autocomplete>
+          <address-autocomplete placeholder="Begin met typen..." [(address)]="address" (addressSelected)="onSelectAddress($event)"></address-autocomplete>
         </div>
       </div>
     </form>

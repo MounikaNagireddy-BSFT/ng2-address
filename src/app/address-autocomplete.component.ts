@@ -1,4 +1,4 @@
-import {Component, Output, EventEmitter} from 'angular2/core';
+import {Component, Input, Output, EventEmitter} from 'angular2/core';
 import {GooglePlacesAutocompleteService} from './google-places-autocomplete.service';
 import {PlaceSuggestion} from './placeSuggestion';
 
@@ -15,7 +15,8 @@ const KEYS = {
   providers: [GooglePlacesAutocompleteService]
 })
 export class AddressAutocompleteComponent {
-  @Output() addressSelected = new EventEmitter<PlaceSuggestion>();
+  @Input() private placeholder: string;
+  @Output() private addressSelected = new EventEmitter<PlaceSuggestion>();
 
   private selectedSuggestion: number;
   private suggestions: PlaceSuggestion[];
@@ -26,7 +27,7 @@ export class AddressAutocompleteComponent {
     this.suggestions = [];
   }
 
-  updateSuggestions($event: KeyboardEvent) {
+  onKeyUp($event: KeyboardEvent) {
     var inputStr: string = (<HTMLInputElement>$event.target).value;
 
     if ($event.keyCode === KEYS.ENTER) {
