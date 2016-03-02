@@ -4,7 +4,8 @@
   "scripts": {
     "postinstall": "npm run typings install",
     "start": "concurrent \"gulp\"",
-    "typings": "typings"
+    "typings": "typings",
+    "serve": "autoreload-server -b  -w \"dist\""
   },
   "license": "ISC",
   "dependencies": {
@@ -17,11 +18,11 @@
     "zone.js": "^0.5.14"
   },
   "devDependencies": {
-    "concurrently": "^1.0.0",
     "del": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-typescript": "^2.11.0",
     "merge2": "^1.0.1",
+    "simple-autoreload-server": "^0.0.21",
     "typings": "^0.6.8"
   }
 }
