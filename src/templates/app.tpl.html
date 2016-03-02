@@ -1,0 +1,22 @@
+
+<div class="container">
+
+  <div class="well">
+    <div class="page-header">
+      <h1>Snappcar Address Autocomplete</h1>
+    </div>
+
+    <form class="form-horizontal">
+      <div class="form-group">
+        <label for="input-address" class="control-label col-md-2">Adres</label>
+        <div class="col-md-10">
+          <address-autocomplete [(address)]="address" (addressSelected)="onSelectAddress($event)"></address-autocomplete>
+        </div>
+      </div>
+    </form>
+
+    <snappcar-address [address]="selectedAddress"></snappcar-address>
+
+    <div id="place-test"></div>
+  </div>
+</div>
