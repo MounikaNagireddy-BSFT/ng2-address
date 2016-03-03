@@ -1,6 +1,8 @@
-<input class="form-control" (keyup)="onKeyUp($event)" [attr.placeholder]="placeholder" [(ngModel)]="inputString">
+<input #input class="form-control" (blur)="onBlur()" (keyup.enter)="input.blur()" (keyup)="onKeyUp($event.keyCode)" [attr.placeholder]="placeholder" [(ngModel)]="inputString">
+<input *ngIf="showStreetField" type="number" class="form-control" placeholder="huisnummer" />
+
 <div>
   <div *ngFor="#suggestion of suggestions; #i = index">
-    <div [class]="i === selectedSuggestion ? 'selected' : ''">{{suggestion}}</div>
+    <div [class]="suggestion === selectedSuggestion ? 'selected' : ''" (mouseover)="selectedSuggestion = suggestion">{{suggestion}}</div>
   </div>
 </div>

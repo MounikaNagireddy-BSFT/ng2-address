@@ -4,12 +4,8 @@ import { PlaceSuggestion } from './placeSuggestion';
 // Service that wraps the google autocomplete service.
 // https://developers.google.com/maps/documentation/javascript/reference#AutocompleteService
 
-export interface AutoSuggestService {
-  getSuggestions(s: string);
-}
-
 @Injectable()
-export class GooglePlacesAutocompleteService implements AutoSuggestService {
+export class GooglePlacesAutocompleteService {
   private _googleAutocomplete: google.maps.places.AutocompleteService;
   private _autoCompleteOpts: google.maps.places.AutocompleteOptions;
 
@@ -18,7 +14,7 @@ export class GooglePlacesAutocompleteService implements AutoSuggestService {
 
     this._autoCompleteOpts = {
       componentRestrictions: {
-        country: 'NL'
+        country: 'NL' // how can we make this configurable?
       },
       types: ['address']
     };
@@ -39,6 +35,6 @@ export class GooglePlacesAutocompleteService implements AutoSuggestService {
           resolve([]);
         }
       })
-      );
+    );
   }
 }

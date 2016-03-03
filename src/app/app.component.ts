@@ -1,4 +1,4 @@
-import {Component} from 'angular2/core';
+import {Component, ApplicationRef, Inject} from "angular2/core";
 import {AddressAutocompleteComponent} from './address-autocomplete.component';
 import {SnappCarAddressComponent} from './snappcar-address.component';
 import {PlaceSuggestion} from './placeSuggestion';
@@ -15,28 +15,23 @@ interface Address {
   directives: [AddressAutocompleteComponent, SnappCarAddressComponent]
 })
 export class AppComponent {
-  addressOutput: HTMLDivElement;
+  private addressOutput: HTMLDivElement;
+  private applicationRef: ApplicationRef;
+  private address: string;
+  private placesService : any;
 
-  ngOnInit (){
-    this.addressOutput = <HTMLDivElement>document.querySelector('#place-test');
+  constructor(
+    @Inject(ApplicationRef) applicationRef: ApplicationRef) {
+    this.applicationRef = applicationRef;
   }
 
-  public address: Address = {
-    toString: () => `${this.address.street || ''}, ${this.address.number || ''}`
-  };
+  ngOnInit() {
+    var addressOutput = <HTMLDivElement>document.querySelector('#place-test');
+    this.placesService = new google.maps.places.PlacesService(addressOutput);
+  }
 
-  onSelectAddress ($event : PlaceSuggestion) {
-    if(!$event){
-      return;
-    }
+  onSelectAddress($event: PlaceSuggestion) {
+    console.log($event);
 
-    var placeId = $event.place_id;
-    var placeService = new google.maps.places.PlacesService(this.addressOutput);
-
-    placeService.getDetails({
-      placeId: placeId
-    }, function(placeResult, status) {
-      this.address = placeResult
-    }.bind(this));
   }
 }
