@@ -4,7 +4,8 @@ import {
 } from 'angular2/core';
 
 import {GooglePlacesAutocompleteService} from './google-places-autocomplete.service';
-import {PlaceSuggestion} from './placeSuggestion';
+import {PlaceSuggestion} from './place-suggestion';
+import {IAutocompleteService} from './autocomplete-service';
 
 const KEYS = {
   ARROW_UP: 38,
@@ -27,11 +28,12 @@ export class AddressAutocompleteComponent {
   private address: any = {};
   private inputString: string;
   private placesService: google.maps.places.PlacesService;
+  private houseNumber : string = '';
   private showHousNumberField: boolean = false;
 
   constructor(
-    private autoCompleteService: GooglePlacesAutocompleteService,
     private el: ElementRef,
+    @Inject(GooglePlacesAutocompleteService) private autoCompleteService: IAutocompleteService,
     @Inject(ApplicationRef) private applicationRef: ApplicationRef
   ) {
     this.suggestions = [];
@@ -93,7 +95,7 @@ export class AddressAutocompleteComponent {
   /**
    * When the user
    */
-  private onBlur (fieldHouseNumber){
+  private onBlur (){
     if(!this.selectedSuggestion){
       return;
     }
@@ -123,19 +125,20 @@ export class AddressAutocompleteComponent {
   }
 
   private onBlurHouseNumber(value) {
-    if(value){
-      let curSuggestion = this.selectedSuggestion;
-
-      curSuggestion.houseNumber = value;
-      //this.inputString = `${curSuggestion}`;
-
-      this.autoCompleteService.getSuggestions(curSuggestion.toString()).then(results => {
-         this.selectedSuggestion = results[0];
-         setTimeout(() => this.onBlur());
-      });
-
-      this.houseNumber = '';
+    if(!value){
+      return;
     }
+
+    let curSuggestion = this.selectedSuggestion;
+
+    curSuggestion.houseNumber = value;
+
+    this.autoCompleteService.getSuggestions(curSuggestion.toString()).then(results => {
+       this.selectedSuggestion = results[0];
+       setTimeout(() => this.onBlur());
+    });
+
+    this.houseNumber = '';
   }
 
   /**

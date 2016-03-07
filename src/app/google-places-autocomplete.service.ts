@@ -1,28 +1,32 @@
 import { Injectable } from 'angular2/core';
-import { PlaceSuggestion } from './placeSuggestion';
+import { PlaceSuggestion } from './place-suggestion';
+import { IAutocompleteService } from './autocomplete-service';
 
 // Service that wraps the google autocomplete service.
 // https://developers.google.com/maps/documentation/javascript/reference#AutocompleteService
 
 @Injectable()
-export class GooglePlacesAutocompleteService {
-  private _googleAutocomplete: google.maps.places.AutocompleteService;
+export class GooglePlacesAutocompleteService implements IAutocompleteService {
   private _autoCompleteOpts: google.maps.places.AutocompleteOptions;
+  private _googleAutocomplete: google.maps.places.AutocompleteService;
+
+  public country: string;
 
   constructor() {
     this._googleAutocomplete = new google.maps.places.AutocompleteService();
-
     this._autoCompleteOpts = {
-      componentRestrictions: {
-        country: 'NL' // how can we make this configurable?
-      },
       types: ['address']
     };
+
+    this.country = 'NL';
   }
 
   getSuggestions(str: string): Promise<PlaceSuggestion[]> {
-    var query = Object.assign({
-      input: str
+    let query = Object.assign({
+      input: str,
+      componentRestrictions: {
+        country: this.country
+      }
     }, this._autoCompleteOpts);
 
     return new Promise<PlaceSuggestion[]>(resolve =>
