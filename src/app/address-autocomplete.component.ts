@@ -1,11 +1,12 @@
 import {
-    Component, ViewChildren, Inject, Input,
+    Component, Inject, Input,
     Output, EventEmitter, ApplicationRef, ElementRef,
     SimpleChange
 } from 'angular2/core';
 
 import {GooglePlacesAutocompleteService} from './google-places-autocomplete.service';
 import {PlaceSuggestion} from './place-suggestion';
+import {Address} from './address';
 import {IAutocompleteService} from './autocomplete-service';
 
 const KEYS = {
@@ -23,7 +24,7 @@ const KEYS = {
 export class AddressAutocompleteComponent {
     @Input() private placeholder: string;
     @Input() private country: string;
-    @Output() public onAddress = new EventEmitter<any>();
+    @Output() public onAddress = new EventEmitter<Address>();
 
     private autoCompleteService: IAutocompleteService;
     private applicationRef: ApplicationRef;
@@ -31,7 +32,7 @@ export class AddressAutocompleteComponent {
 
     private selectedSuggestion: PlaceSuggestion;
     private suggestions: PlaceSuggestion[];
-    private address: any = {};
+    private address: Address;
     private inputString: string;
     private houseNumber: string;
     private showHousNumberField: boolean = false;
@@ -52,13 +53,15 @@ export class AddressAutocompleteComponent {
       this.autoCompleteService.country = this.country;
     }
 
-    ngOnChanges(changes: {[propKey:string]: SimpleChange}){
-      if('country' in changes){
-        this.autoCompleteService.country = changes['country'].currentValue;
+    ngOnChanges(changes: {country: SimpleChange, address: SimpleChange}){
+      if(changes.country){
+        this.autoCompleteService.country = changes.country.currentValue;
+        this.inputString = null;
+        this.showHousNumberField = null;
       }
     }
 
-    private onKeyUp(keyCode: number, fieldStreet: any) {
+    private onKeyUp(keyCode: number, fieldStreet: HTMLInputElement) {
         if (keyCode === KEYS.ENTER) {
             fieldStreet.blur()
             return;
@@ -131,6 +134,7 @@ export class AddressAutocompleteComponent {
           let address = placeDetail.address;
 
           this.showHousNumberField = !address.houseNumber;
+          this.address = address;
           this.onAddress.emit(address);
           this.applicationRef.tick();
         });

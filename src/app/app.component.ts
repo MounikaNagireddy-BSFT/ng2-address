@@ -1,4 +1,4 @@
-import {Component, ApplicationRef, Inject} from "angular2/core";
+import {Component, Inject, SimpleChange} from "angular2/core";
 import {AddressAutocompleteComponent} from './address-autocomplete.component';
 import {PlaceSuggestion} from './place-suggestion';
 import {Address} from './address';
@@ -11,13 +11,4 @@ import {Address} from './address';
 export class AppComponent {
     private address: any;
     private country: string = 'NL';
-    private applicationRef: ApplicationRef;
-
-    constructor(
-        applicationRef: ApplicationRef
-    ) {}
-
-    onAddress(address: any) {
-        this.address = address;
-    }
 }
