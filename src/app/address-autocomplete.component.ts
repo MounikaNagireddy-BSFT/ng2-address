@@ -33,9 +33,8 @@ export class AddressAutocompleteComponent {
     private suggestions: PlaceSuggestion[];
     private address: any = {};
     private inputString: string;
-    private houseNumber: string = '';
+    private houseNumber: string;
     private showHousNumberField: boolean = false;
-
 
     constructor(
         el: ElementRef,
@@ -45,6 +44,7 @@ export class AddressAutocompleteComponent {
         this.el = el;
         this.autoCompleteService = autoCompleteService;
         this.applicationRef = applicationRef;
+
         this.suggestions = [];
     }
 

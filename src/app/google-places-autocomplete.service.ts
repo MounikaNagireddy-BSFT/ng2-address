@@ -14,7 +14,6 @@ export class GooglePlacesAutocompleteService implements IAutocompleteService {
 
   constructor() {
     this._googleAutocomplete = new google.maps.places.AutocompleteService();
-
     this.country = 'NL'; // Default.
   }
 
