@@ -1,4 +1,4 @@
-<input #fieldStreet class="form-control" (blur)="onBlur(fieldHouseNumber)" (keyup)="onKeyUp($event.keyCode, fieldStreet)" [attr.placeholder]="placeholder" [(ngModel)]="inputString">
+<input #fieldStreet class="form-control" (blur)="useCurrentSuggestion()" (keyup)="onKeyUp($event.keyCode, fieldStreet)" [attr.placeholder]="placeholder" [(ngModel)]="inputString">
 <div class="autocomplete-container">
   <div *ngFor="#suggestion of suggestions; #i = index">
     <div [class]="suggestion === selectedSuggestion ? 'selected' : ''" (mouseover)="selectedSuggestion = suggestion">{{suggestion}}</div>

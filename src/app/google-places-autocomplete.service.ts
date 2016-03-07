@@ -18,7 +18,7 @@ export class GooglePlacesAutocompleteService implements IAutocompleteService {
       types: ['address']
     };
 
-    this.country = 'NL';
+    this.country = 'NL'; // Default.
   }
 
   getSuggestions(str: string): Promise<PlaceSuggestion[]> {
@@ -33,12 +33,21 @@ export class GooglePlacesAutocompleteService implements IAutocompleteService {
       this._googleAutocomplete.getPlacePredictions(query, (results: google.maps.places.AutocompletePrediction[], status: google.maps.places.PlacesServiceStatus) => {
 
         if (status === google.maps.places.PlacesServiceStatus.OK) {
-          var suggestions = results.map(r => new PlaceSuggestion(r));
+          var suggestions = results.map(r => this.googleResultToSuggestion(r));
           resolve(suggestions);
         } else {
           resolve([]);
         }
       })
     );
+  }
+
+  private googleResultToSuggestion (googleResult: google.maps.places.AutocompletePrediction) : PlaceSuggestion {
+    let suggestion = new PlaceSuggestion();
+
+    suggestion.description = googleResult.description;
+    suggestion.id = googleResult.place_id;
+
+    return suggestion;
   }
 }

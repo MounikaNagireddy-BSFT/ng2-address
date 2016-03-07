@@ -95,7 +95,7 @@ export class AddressAutocompleteComponent {
   /**
    * When the user
    */
-  private onBlur (){
+  private useCurrentSuggestion (){
     if(!this.selectedSuggestion){
       return;
     }
@@ -108,18 +108,11 @@ export class AddressAutocompleteComponent {
 
     // Get the address details (components) based on the google placeid
     this.placesService.getDetails({
-      placeId: this.selectedSuggestion.place_id
+      placeId: this.selectedSuggestion.id
     }, (placeResult, status) => {
-
-        var addr = this.parseGoogleResult(placeResult.address_components);
-
-        this.address = addr;
-
-        console.log(addr);
-
-        this.showHousNumberField = !('street_number' in addr);
-
-        this.onAddress.emit(addr);
+        this.address = this.parseGoogleResult(placeResult.address_components);
+        this.showHousNumberField = !('street_number' in this.address);
+        this.onAddress.emit(this.address);
         this.applicationRef.tick();
     });
   }
@@ -129,16 +122,22 @@ export class AddressAutocompleteComponent {
       return;
     }
 
-    let curSuggestion = this.selectedSuggestion;
+    // Add the housenumber to the current querystring, ask google for predictions -> use first suggestion.
+    let description = this.selectedSuggestion.description;
+    let addrCmp = description.split(', ');
 
-    curSuggestion.houseNumber = value;
+    addrCmp.splice(1, 0, value);
 
-    this.autoCompleteService.getSuggestions(curSuggestion.toString()).then(results => {
+    let newDescription = addrCmp.join(' ');
+
+    this.autoCompleteService.getSuggestions(newDescription).then(results => {
        this.selectedSuggestion = results[0];
-       setTimeout(() => this.onBlur());
-    });
 
-    this.houseNumber = '';
+       //
+       setTimeout(() => this.useCurrentSuggestion());
+
+       this.houseNumber = '';
+    });
   }
 
   /**
