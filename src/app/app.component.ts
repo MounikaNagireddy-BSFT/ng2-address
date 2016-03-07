@@ -10,6 +10,7 @@ import {PlaceSuggestion} from './place-suggestion';
 })
 export class AppComponent {
   private address: any;
+  private country: string = 'NL';
 
   constructor(
     @Inject(ApplicationRef) private applicationRef: ApplicationRef

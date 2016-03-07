@@ -8,9 +8,17 @@
 
     <form class="form-horizontal">
       <div class="form-group">
+        <div class="col-md-10">
+          <select [(ngModel)]="country" class="form-control">
+            <option value="NL">Nederland</option>
+            <option value="SE">Zweden</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
         <label for="input-address" class="control-label col-md-2">Waar wil je heen?</label>
         <div class="col-md-10">
-          <address-autocomplete placeholder="Snappie laan 4" (onAddress)="onAddress($event)"></address-autocomplete>
+          <address-autocomplete [country]="country" placeholder="Snappie laan 4" (onAddress)="onAddress($event)"></address-autocomplete>
         </div>
       </div>
     </form>
@@ -19,8 +27,8 @@
 <div class="container" *ngIf="address">
     <div class="well">
         <h1 >
-          {{address.route}} {{address.street_number}}<br>
-          {{address.postal_code || address.postal_code_prefix}} {{address.locality}}<br>
+          {{address.street}} {{address.houseNumber}}<br>
+          {{address.postalCode}} {{address.city}}<br>
           {{address.country}}
         </h1>
     </div>
