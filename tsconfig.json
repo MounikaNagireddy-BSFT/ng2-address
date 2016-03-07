@@ -8,5 +8,8 @@
     "removeComments": false,
     "noImplicitAny": false
   },
-  "compileOnSave": false
+  "compileOnSave": false,
+  "exclude": [
+    "node_modules"
+  ]
 }
