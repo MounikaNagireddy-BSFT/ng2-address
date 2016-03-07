@@ -25,6 +25,10 @@ export class AddressAutocompleteComponent {
     @Input() private country: string;
     @Output() public onAddress = new EventEmitter<any>();
 
+    private autoCompleteService: IAutocompleteService;
+    private applicationRef: ApplicationRef;
+    private el: ElementRef;
+
     private selectedSuggestion: PlaceSuggestion;
     private suggestions: PlaceSuggestion[];
     private address: any = {};
@@ -32,11 +36,15 @@ export class AddressAutocompleteComponent {
     private houseNumber: string = '';
     private showHousNumberField: boolean = false;
 
+
     constructor(
-        private el: ElementRef,
-        @Inject(GooglePlacesAutocompleteService) private autoCompleteService: IAutocompleteService,
-        @Inject(ApplicationRef) private applicationRef: ApplicationRef
+        el: ElementRef,
+        autoCompleteService: GooglePlacesAutocompleteService,
+        applicationRef: ApplicationRef
     ) {
+        this.el = el;
+        this.autoCompleteService = autoCompleteService;
+        this.applicationRef = applicationRef;
         this.suggestions = [];
     }
 
