@@ -1,4 +1,8 @@
-import {Component, Inject, Input, Output, EventEmitter, ApplicationRef} from 'angular2/core';
+import {
+  Component, ViewChildren, Inject, Input,
+  Output, EventEmitter, ApplicationRef, ElementRef
+} from 'angular2/core';
+
 import {GooglePlacesAutocompleteService} from './google-places-autocomplete.service';
 import {PlaceSuggestion} from './placeSuggestion';
 
@@ -16,25 +20,27 @@ const KEYS = {
 })
 export class AddressAutocompleteComponent {
   @Input() private placeholder: string;
-  @Output() private addressSelected = new EventEmitter<any>();
+  @Output() public onAddress = new EventEmitter<any>();
 
   private selectedSuggestion: PlaceSuggestion;
-  private address: any;
   private suggestions: PlaceSuggestion[];
+  private address: any = {};
   private inputString: string;
   private placesService: google.maps.places.PlacesService;
-  private showStreetField: boolean = false;
+  private showHousNumberField: boolean = false;
 
   constructor(
     private autoCompleteService: GooglePlacesAutocompleteService,
+    private el: ElementRef,
     @Inject(ApplicationRef) private applicationRef: ApplicationRef
   ) {
     this.suggestions = [];
     this.placesService = new google.maps.places.PlacesService(document.createElement('div'));
   }
 
-  private onKeyUp(keyCode : number) {
+  private onKeyUp(keyCode : number, fieldStreet: any) {
     if(keyCode === KEYS.ENTER){
+      fieldStreet.blur()
       return;
     }
 
@@ -47,19 +53,26 @@ export class AddressAutocompleteComponent {
       return;
     }
 
+    // User cleared the input field, or this is the first key pressed (which isnt a character).
     if(!this.inputString){
       this.selectedSuggestion = null;
       this.suggestions = [];
       return;
     }
 
-    this.autoCompleteService.getSuggestions(this.inputString).then(results => {
+    this.showSuggestions(this.inputString);
+  }
+
+  private showSuggestions (str) {
+    this.autoCompleteService.getSuggestions(str).then(results => {
        this.suggestions = results;
        this.selectedSuggestion = results[0];
-       return;
     });
   }
 
+  /**
+   * Use arrow keys to select previous or next suggestion
+   */
   private updateSuggestionSelection(keyCode) {
     var selectedIndex = this.suggestions.indexOf(this.selectedSuggestion);
 
@@ -77,37 +90,64 @@ export class AddressAutocompleteComponent {
     this.selectedSuggestion = this.suggestions[selectedIndex];
   }
 
-  private onBlur (){
-    var prediction = this.selectedSuggestion;
+  /**
+   * When the user
+   */
+  private onBlur (fieldHouseNumber){
+    if(!this.selectedSuggestion){
+      return;
+    }
+
+    // Replace input field with current selected suggestion.
     this.inputString = this.selectedSuggestion.description;
 
+    // Remove suggestion list
     this.suggestions = [];
 
+    // Get the address details (components) based on the google placeid
     this.placesService.getDetails({
-      placeId: prediction.place_id
+      placeId: this.selectedSuggestion.place_id
     }, (placeResult, status) => {
-        var addr = this.parseGoogleResult(placeResult);
 
-        this.inputString = placeResult.formatted_address;
-        this.addressSelected.emit(addr);
+        var addr = this.parseGoogleResult(placeResult.address_components);
+
+        this.address = addr;
+
+        console.log(addr);
+
+        this.showHousNumberField = !('street_number' in addr);
+
+        this.onAddress.emit(addr);
         this.applicationRef.tick();
     });
   }
 
-  private parseGoogleResult(placeResult){
-    var components = placeResult.address_components;
+  private onBlurHouseNumber(value) {
+    if(value){
+      let curSuggestion = this.selectedSuggestion;
 
-    var typesMapped = components.reduce(function(acc, cur){
-      acc[cur.types[0]] = cur.long_name;
-      return acc;
+      curSuggestion.houseNumber = value;
+      //this.inputString = `${curSuggestion}`;
+
+      this.autoCompleteService.getSuggestions(curSuggestion.toString()).then(results => {
+         this.selectedSuggestion = results[0];
+         setTimeout(() => this.onBlur());
+      });
+
+      this.houseNumber = '';
+    }
+  }
+
+  /**
+   * Transform google address components array to a type-name map.
+   */
+  private parseGoogleResult(addressComponents){
+
+    return addressComponents.reduce((mapping, addrComponent) => {
+
+      mapping[addrComponent.types[0]] = addrComponent.long_name;
+      return mapping;
+
     }, {});
-
-    console.log(typesMapped);
-    console.log(`Street: ${typesMapped.route} Housenumber: ${typesMapped.street_number}`);
-
-    this.showStreetField = !("street_number" in typesMapped);
-    console.log('show street field: ' + this.showStreetField);
-
-    return typesMapped;
   }
 }

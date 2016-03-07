@@ -1,8 +1,8 @@
-<input #input class="form-control" (blur)="onBlur()" (keyup.enter)="input.blur()" (keyup)="onKeyUp($event.keyCode)" [attr.placeholder]="placeholder" [(ngModel)]="inputString">
-<input *ngIf="showStreetField" type="number" class="form-control" placeholder="huisnummer" />
-
-<div>
+<input #fieldStreet class="form-control" (blur)="onBlur(fieldHouseNumber)" (keyup)="onKeyUp($event.keyCode, fieldStreet)" [attr.placeholder]="placeholder" [(ngModel)]="inputString">
+<div class="autocomplete-container">
   <div *ngFor="#suggestion of suggestions; #i = index">
     <div [class]="suggestion === selectedSuggestion ? 'selected' : ''" (mouseover)="selectedSuggestion = suggestion">{{suggestion}}</div>
   </div>
 </div>
+
+<input [class.hidden]="!showHousNumberField" #fieldHouseNumber (keyup.enter)="$event.target.blur()" (blur)="onBlurHouseNumber(fieldHouseNumber.value)" class="form-control" [(ngModel)]="houseNumber" placeholder="huisnummer" />

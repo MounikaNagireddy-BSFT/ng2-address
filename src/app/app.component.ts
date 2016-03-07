@@ -12,26 +12,17 @@ interface Address {
 @Component({
   selector: 'my-app',
   templateUrl: 'templates/app.tpl.html',
-  directives: [AddressAutocompleteComponent, SnappCarAddressComponent]
+  directives: [AddressAutocompleteComponent]
 })
 export class AppComponent {
-  private addressOutput: HTMLDivElement;
-  private applicationRef: ApplicationRef;
-  private address: string;
-  private placesService : any;
+  private address: any;
 
   constructor(
-    @Inject(ApplicationRef) applicationRef: ApplicationRef) {
-    this.applicationRef = applicationRef;
-  }
+    @Inject(ApplicationRef) private applicationRef: ApplicationRef
+  ) {}
 
-  ngOnInit() {
-    var addressOutput = <HTMLDivElement>document.querySelector('#place-test');
-    this.placesService = new google.maps.places.PlacesService(addressOutput);
-  }
-
-  onSelectAddress($event: PlaceSuggestion) {
-    console.log($event);
-
+  onAddress(address: any) {
+    this.address = address;
+    this.applicationRef.tick();
   }
 }

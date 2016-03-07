@@ -10,11 +10,18 @@
       <div class="form-group">
         <label for="input-address" class="control-label col-md-2">Waar wil je heen?</label>
         <div class="col-md-10">
-          <address-autocomplete placeholder="Begin met typen..."></address-autocomplete>
+          <address-autocomplete placeholder="Snappie laan 4" (onAddress)="onAddress($event)"></address-autocomplete>
         </div>
       </div>
     </form>
-
-    <div id="place-test">{{address}}</div>
   </div>
+</div>
+<div class="container" *ngIf="address">
+    <div class="well">
+        <h1 >
+          {{address.route}} {{address.street_number}}<br>
+          {{address.postal_code || address.postal_code_prefix}} {{address.locality}}<br>
+          {{address.country}}
+        </h1>
+    </div>
 </div>
