@@ -131,12 +131,13 @@ export class AddressAutocompleteComponent {
     let newDescription = addrCmp.join(' ');
 
     this.autoCompleteService.getSuggestions(newDescription).then(results => {
+       if(results.length < 1){
+         return;
+       }
+
        this.selectedSuggestion = results[0];
-
-       //
-       setTimeout(() => this.useCurrentSuggestion());
-
        this.houseNumber = '';
+       this.useCurrentSuggestion();
     });
   }
 
