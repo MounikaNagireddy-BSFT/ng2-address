@@ -1,6 +1,5 @@
 import {Component, ApplicationRef, Inject} from "angular2/core";
 import {AddressAutocompleteComponent} from './address-autocomplete.component';
-import {SnappCarAddressComponent} from './snappcar-address.component';
 import {PlaceSuggestion} from './place-suggestion';
 import {Address} from './address';
 
