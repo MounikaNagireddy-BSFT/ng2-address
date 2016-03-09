@@ -19,7 +19,7 @@ export class GooglePlacesAutocompleteService implements IAutocompleteService {
 
   getSuggestions(str: string): Promise<PlaceSuggestion[]> {
 
-    let request: google.maps.places.AutocompletionRequest= {
+    let request: google.maps.places.AutocompletionRequest = {
       input: str,
       componentRestrictions: {
         country: this.country
@@ -41,9 +41,10 @@ export class GooglePlacesAutocompleteService implements IAutocompleteService {
   }
 
   /**
-   * Get detailed
+   * Get place details based on google place_id.
    */
   getSuggestionDetails(id: string): Promise<PlaceDetails>{
+    // The google PlacesService somehow needs an HTMLDivElement as an argument. Create a dummy div.
     let service = new google.maps.places.PlacesService(document.createElement('div'));
 
     return new Promise<PlaceDetails>((resolve, reject) =>
@@ -76,19 +77,20 @@ export class GooglePlacesAutocompleteService implements IAutocompleteService {
    * Map google result to PlaceDetail object
    */
   private parseGooglePlaceResult(placeResult : google.maps.places.PlaceResult) : PlaceDetails{
-      const map : any = placeResult.address_components.reduce((mapping, addrComponent) => {
-        mapping[addrComponent.types[0]] = addrComponent.long_name;
-        return mapping;
+      // For convenience first create a map of the google address components. ie: { 'locality' : 'Utrecht', ... }
+      const map : any = placeResult.address_components.reduce((map, addrComponent) => {
+        map[addrComponent.types[0]] = addrComponent.long_name;
+        return map;
       }, {});
 
-      let placeDetail = new PlaceDetails();
+      console.log(placeResult, map);
 
-      placeDetail.id = placeResult.place_id;
+      let placeDetail = new PlaceDetails(placeResult.place_id);
 
       placeDetail.address = {
         street : map.route,
         houseNumber: map.street_number,
-        postalCode: map.postal_code || map.postal_code_prefix,
+        postalCode: map.postal_code,
         city: map.locality,
         country: map.country
       };
