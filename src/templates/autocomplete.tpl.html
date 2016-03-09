@@ -1,8 +1,36 @@
-<input class="form-control" (blur)="useCurrentSuggestion()" (keyup)="onKeyUp($event.keyCode, $event.target)" [attr.placeholder]="placeholder" [(ngModel)]="inputString">
+<input
+  #fieldStreet
+  class="form-control"
+  (blur)="useCurrentSuggestion()"
+  (keyup)="onKeyUp($event.keyCode, fieldStreet)"
+  [attr.placeholder]="placeholder"
+  [(ngModel)]="inputString"
+/>
+
 <div class="autocomplete-container">
   <div *ngFor="#suggestion of suggestions; #i = index">
-    <div [class]="suggestion === selectedSuggestion ? 'selected' : ''" (mouseover)="selectedSuggestion = suggestion">{{suggestion}}</div>
+    <div [class.selected]="suggestion === selectedSuggestion" (mouseover)="selectedSuggestion = suggestion">{{suggestion}}</div>
   </div>
 </div>
 
-<input [class.hidden]="!address || address.houseNumber" (keyup.enter)="$event.target.blur()" (blur)="onBlurHouseNumber($event.target.value)" class="form-control" [(ngModel)]="houseNumber" placeholder="huisnummer" />
+<input
+  #fieldHouseNumber
+  *ngIf="address"
+  [class.hidden]="address.houseNumber"
+  [ngModel]="address.houseNumber"
+  (keyup.enter)="$event.target.blur()"
+  (blur)="address.houseNumber = fieldHouseNumber.value"
+  placeholder="huisnummer"
+  class="form-control"
+ />
+
+<input
+  #fieldPostalCode
+  *ngIf="address"
+  [class.hidden]="address.postalCode"
+  [ngModel]="address.postalCode"
+  (keyup.enter)="$event.target.blur()"
+  (blur)="address.postalCode = fieldPostalCode.value"
+  placeholder="Postcode"
+  class="form-control"
+/>
