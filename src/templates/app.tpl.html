@@ -8,6 +8,7 @@
 
     <form class="form-horizontal">
       <div class="form-group">
+        <label class="control-label col-md-2">Land</label>
         <div class="col-md-10">
           <select [ngModel]="country" (ngModelChange)="country = $event; address = null;" class="form-control">
             <option value="NL">Nederland</option>
@@ -16,7 +17,7 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="input-address" class="control-label col-md-2">Waar wil je heen?</label>
+        <label class="control-label col-md-2">Straat &amp; huisnummer</label>
         <div class="col-md-10">
           <address-autocomplete [country]="country" [placeholder]="'Snappie laan 4'" [address]="address" (onAddress)="address = $event"></address-autocomplete>
         </div>
