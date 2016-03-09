@@ -35,7 +35,6 @@ export class AddressAutocompleteComponent {
     private address: Address;
     private inputString: string;
     private houseNumber: string;
-    private showHousNumberField: boolean = false;
 
     constructor(
         el: ElementRef,
@@ -57,7 +56,7 @@ export class AddressAutocompleteComponent {
       if(changes.country){
         this.autoCompleteService.country = changes.country.currentValue;
         this.inputString = null;
-        this.showHousNumberField = null;
+        this.address = null;
       }
     }
 
@@ -124,7 +123,7 @@ export class AddressAutocompleteComponent {
         // Replace input field with current selected suggestion.
         this.inputString = this.selectedSuggestion.description;
 
-        // Remove suggestion list
+        // Clear current suggestion list
         this.suggestions = [];
 
         // Get the address details (components) based on the google placeid
@@ -133,7 +132,6 @@ export class AddressAutocompleteComponent {
         this.autoCompleteService.getSuggestionDetails(placeId).then(placeDetail => {
           let address = placeDetail.address;
 
-          this.showHousNumberField = !address.houseNumber;
           this.address = address;
           this.onAddress.emit(address);
           this.applicationRef.tick();

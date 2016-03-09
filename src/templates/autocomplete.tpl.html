@@ -5,4 +5,4 @@
   </div>
 </div>
 
-<input [class.hidden]="!showHousNumberField" (keyup.enter)="$event.target.blur()" (blur)="onBlurHouseNumber($event.target.value)" class="form-control" [(ngModel)]="houseNumber" placeholder="huisnummer" />
+<input [class.hidden]="!address || address.houseNumber" (keyup.enter)="$event.target.blur()" (blur)="onBlurHouseNumber($event.target.value)" class="form-control" [(ngModel)]="houseNumber" placeholder="huisnummer" />
