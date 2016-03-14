@@ -6,5 +6,6 @@ export class PlaceDetails {
 
   constructor(id?: string){
     this.id = id;
+    this.address = new Address();
   }
 }

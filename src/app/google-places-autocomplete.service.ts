@@ -1,7 +1,8 @@
 import { Injectable } from 'angular2/core';
-import { PlaceSuggestion } from './place-suggestion';
+import { PlaceSuggestion, PlaceType } from './place-suggestion';
 import { PlaceDetails } from './place-details';
 import { IAutocompleteService } from './autocomplete-service';
+import { Address } from './address';
 
 // Service that wraps the google autocomplete service.
 // https://developers.google.com/maps/documentation/javascript/reference#AutocompleteService
@@ -69,6 +70,7 @@ export class GooglePlacesAutocompleteService implements IAutocompleteService {
 
     suggestion.description = googleResult.description;
     suggestion.id = googleResult.place_id;
+    suggestion.type = PlaceType[googleResult.types[0]];
 
     return suggestion;
   }
@@ -83,17 +85,15 @@ export class GooglePlacesAutocompleteService implements IAutocompleteService {
         return map;
       }, {});
 
-      console.log(placeResult, map);
-
       let placeDetail = new PlaceDetails(placeResult.place_id);
 
-      placeDetail.address = {
+      Object.assign(placeDetail.address, {
         street : map.route,
         houseNumber: map.street_number,
         postalCode: map.postal_code,
         city: map.locality,
         country: map.country
-      };
+      });
 
       return placeDetail;
   }

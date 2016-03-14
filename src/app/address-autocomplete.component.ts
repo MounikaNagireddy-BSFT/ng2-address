@@ -34,7 +34,6 @@ export class AddressAutocompleteComponent {
     private suggestions: PlaceSuggestion[];
     private address: Address;
     private inputString: string;
-    private houseNumber: string;
 
     constructor(
         el: ElementRef,
@@ -100,9 +99,7 @@ export class AddressAutocompleteComponent {
 
         if (keyCode === KEYS.ARROW_DOWN) {
             selectedIndex++;
-        }
-
-        if (keyCode === KEYS.ARROW_UP) {
+        } else if (keyCode === KEYS.ARROW_UP) {
             selectedIndex--;
         }
 
@@ -130,35 +127,28 @@ export class AddressAutocompleteComponent {
         let placeId = this.selectedSuggestion.id;
 
         this.autoCompleteService.getSuggestionDetails(placeId).then(placeDetail => {
-          let address = placeDetail.address;
+          let address : Address = placeDetail.address;
 
           this.address = address;
           this.onAddress.emit(address);
-          this.applicationRef.tick();
         });
     }
 
-    private onBlurHouseNumber(value) {
-        if (!value) {
-            return;
+    private extraFieldChanged (addressComponentName: string, value: string){
+        this.address[addressComponentName] = value;
+
+        if(addressComponentName === 'houseNumber'){
+
+          let description = this.address.toString();
+
+          this.autoCompleteService.getSuggestions(description).then(results => {
+              if (results.length < 1) {
+                  return;
+              }
+              debugger;
+              this.selectedSuggestion = results[0];
+              this.useCurrentSuggestion();
+          });
         }
-
-        // Add the housenumber to the current querystring, ask google for predictions -> use first suggestion.
-        let description = this.selectedSuggestion.description;
-        let addrCmp = description.split(', ');
-
-        addrCmp.splice(1, 0, value);
-
-        let newDescription = addrCmp.join(' ');
-
-        this.autoCompleteService.getSuggestions(newDescription).then(results => {
-            if (results.length < 1) {
-                return;
-            }
-
-            this.selectedSuggestion = results[0];
-            this.houseNumber = '';
-            this.useCurrentSuggestion();
-        });
     }
 }
