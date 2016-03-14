@@ -1,36 +1,34 @@
-<input
-  #fieldStreet
+<input #fieldStreet
   class="form-control"
   (blur)="useCurrentSuggestion()"
   (keyup)="onKeyUp($event.keyCode, fieldStreet)"
   [attr.placeholder]="placeholder"
-  [(ngModel)]="inputString"
-/>
+  [(ngModel)]="inputString" />
 
 <div class="autocomplete-container">
-  <div *ngFor="#suggestion of suggestions; #i = index">
-    <div [class.selected]="suggestion === selectedSuggestion" (mouseover)="selectedSuggestion = suggestion">{{suggestion}}</div>
+  <div *ngFor="#suggestion of suggestions">
+    <div
+      [class.selected]="suggestion === selectedSuggestion"
+      (mouseover)="selectedSuggestion = suggestion">
+      {{suggestion}}
+    </div>
   </div>
 </div>
 
-<input
-  #fieldHouseNumber
+<input #fieldHouseNumber
   *ngIf="address"
   [class.hidden]="address.houseNumber"
   [ngModel]="address.houseNumber"
-  (keyup.enter)="$event.target.blur()"
-  (blur)="address.houseNumber = fieldHouseNumber.value"
+  (keyup.enter)="fieldHouseNumber.blur()"
+  (blur)="extraFieldChanged('houseNumber', fieldHouseNumber.value)"
   placeholder="huisnummer"
-  class="form-control"
- />
+  class="form-control" />
 
-<input
-  #fieldPostalCode
+<input #fieldPostalCode
   *ngIf="address"
   [class.hidden]="address.postalCode"
   [ngModel]="address.postalCode"
-  (keyup.enter)="$event.target.blur()"
-  (blur)="address.postalCode = fieldPostalCode.value"
+  (keyup.enter)="fieldPostalCode.blur()"
+  (blur)="extraFieldChanged('postalCode', fieldPostalCode.value)"
   placeholder="Postcode"
-  class="form-control"
-/>
+  class="form-control" />
