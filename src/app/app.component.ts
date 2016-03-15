@@ -1,4 +1,4 @@
-import {Component, Inject, SimpleChange} from "angular2/core";
+import {Component, Inject, SimpleChange} from 'angular2/core';
 import {AddressAutocompleteComponent} from './address-autocomplete.component';
 import {PlaceSuggestion} from './place-suggestion';
 import {Address} from './address';

@@ -1,4 +1,3 @@
-
 export class PlaceSuggestion {
   id: string;
   description: string;

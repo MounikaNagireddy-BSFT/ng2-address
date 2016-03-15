@@ -8,9 +8,9 @@ export class Address {
   coords: {
     lat: number,
     lng: number
-  }
+  };
 
-  toString() : string {
+  toString(): string {
     // Get all *filled* fields from this object and concatenate them.
     return ['street', 'houseNumber', 'city', 'country']
       .map(k => this[k])  // Get all values for given keys

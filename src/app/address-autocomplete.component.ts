@@ -1,6 +1,6 @@
 import {
     Component, Inject, Input,
-    Output, EventEmitter, ApplicationRef, ElementRef,
+    Output, EventEmitter, ElementRef,
     SimpleChange
 } from 'angular2/core';
 
@@ -23,16 +23,16 @@ const KEYS = {
     providers: [GooglePlacesAutocompleteService]
 })
 export class AddressAutocompleteComponent {
-    @Input() private placeholderStreet: string;
-    @Input() private placeholderHouseNumber: string;
-    @Input() private placeholderPostalCode: string;
-    @Input() private country: string;
     @Output() public onAddress = new EventEmitter<Address>();
+
+    @Input() public placeholderStreet: string;
+    @Input() public placeholderHouseNumber: string;
+    @Input() public placeholderPostalCode: string;
+    @Input() public country: string;
 
     public address: Address;
 
     private autoCompleteService: IAutocompleteService;
-    private applicationRef: ApplicationRef;
     private el: ElementRef;
 
     private selectedSuggestion: PlaceSuggestion;
@@ -43,22 +43,19 @@ export class AddressAutocompleteComponent {
 
     constructor(
         el: ElementRef,
-        autoCompleteService: GooglePlacesAutocompleteService,
-        applicationRef: ApplicationRef
+        autoCompleteService: GooglePlacesAutocompleteService
     ) {
         this.el = el;
         this.autoCompleteService = autoCompleteService;
-        this.applicationRef = applicationRef;
-
         this.suggestions = [];
     }
 
-    ngOnInit() {
+    private ngOnInit() {
       this.autoCompleteService.country = this.country;
     }
 
-    ngOnChanges(changes: {country: SimpleChange, address: SimpleChange}){
-      if(changes.country){
+    private ngOnChanges(changes: {country: SimpleChange, address: SimpleChange}) {
+      if (changes.country) {
         this.autoCompleteService.country = changes.country.currentValue;
         this.inputString = null;
         this.address = null;
@@ -67,7 +64,7 @@ export class AddressAutocompleteComponent {
 
     private onKeyUp(keyCode: number, fieldStreet: HTMLInputElement) {
         if (keyCode === KEYS.ENTER) {
-            fieldStreet.blur()
+            fieldStreet.blur();
             return;
         }
 
@@ -101,7 +98,7 @@ export class AddressAutocompleteComponent {
      * Use arrow keys to select previous or next suggestion
      */
     private updateSuggestionSelection(keyCode) {
-        var selectedIndex = this.suggestions.indexOf(this.selectedSuggestion);
+        let selectedIndex = this.suggestions.indexOf(this.selectedSuggestion);
 
         if (keyCode === KEYS.ARROW_DOWN) {
             selectedIndex++;
@@ -110,7 +107,7 @@ export class AddressAutocompleteComponent {
         }
 
         // Clamping selection between 0 and num suggestions.
-        selectedIndex = Math.min(this.suggestions.length - 1, Math.max(0, selectedIndex))
+        selectedIndex = Math.min(this.suggestions.length - 1, Math.max(0, selectedIndex));
 
         this.selectedSuggestion = this.suggestions[selectedIndex];
     }
@@ -133,9 +130,9 @@ export class AddressAutocompleteComponent {
         let placeId = this.selectedSuggestion.id;
 
         return this.autoCompleteService.getSuggestionDetails(placeId).then(placeDetail => {
-          let address : Address = placeDetail.address;
+          let address: Address = placeDetail.address;
 
-          if(address.isComplete){
+          if (address.isComplete) {
             // remove manual housenumber, postalcode override
             this.manualHouseNumber = '';
             this.manualPostalCode = '';
@@ -146,7 +143,7 @@ export class AddressAutocompleteComponent {
         });
     }
 
-    private onBlurHouseNumber (houseNumber: string){
+    private onBlurHouseNumber(houseNumber: string) {
         this.manualHouseNumber = houseNumber;
 
         // copy the current address to get a new search string containing the housenumber.
@@ -159,7 +156,7 @@ export class AddressAutocompleteComponent {
             let bestSuggestion = results[0];
             this.autoCompleteService.getSuggestionDetails(bestSuggestion.id).then((placeDetail: PlaceDetails) => {
 
-              if(placeDetail.address.isComplete()){
+              if (placeDetail.address.isComplete()) {
                 this.selectedSuggestion = bestSuggestion;
                 this.useCurrentSuggestion();
               } else {
