@@ -3,9 +3,8 @@
   "version": "0.0.1",
   "scripts": {
     "postinstall": "npm run typings install",
-    "start": "concurrent \"gulp\"",
     "typings": "typings",
-    "serve": "autoreload-server -b  -w \"dist\""
+    "serve": "autoreload-server -b -w \"dist\""
   },
   "license": "ISC",
   "dependencies": {

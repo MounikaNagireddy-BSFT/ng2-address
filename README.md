@@ -13,7 +13,8 @@ Start gulp to build and watch for changes.
 gulp
 ```
 
-To run, fire up the http server (in a second terminal window)
+To start the application, fire up the http server.
 ```
-gulp serve
+npm run serve
 ```
+Open url in browser: http://localhost:8080/dist/index.html
