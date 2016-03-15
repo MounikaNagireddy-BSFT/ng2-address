@@ -1,43 +1,34 @@
-
 <div class="container">
+  <div class="row">
+    <div class="well col-md-6">
+      <div class="page-header">
+        <h1>ng2-address</h1>
+      </div>
 
-  <div class="well">
-    <div class="page-header">
-      <h1>Snappcar Address Autocomplete</h1>
-    </div>
-
-    <form class="form-horizontal">
-      <div class="form-group">
-        <label class="control-label col-md-2">Land</label>
-        <div class="col-md-10">
+      <form>
+        <div class="form-group label-floating">
+          <label class="control-label">Country</label>
           <select [ngModel]="country" (ngModelChange)="country = $event; address = null;" class="form-control">
-            <option value="NL">Nederland</option>
-            <option value="SE">Zweden</option>
+            <option value="NL">Netherlands</option>
+            <option value="SE">Sweden</option>
           </select>
         </div>
-      </div>
-      <div class="form-group">
-        <label class="control-label col-md-2">Straat &amp; huisnummer</label>
-        <div class="col-md-10">
-          <address-autocomplete
-            [country]="country"
-            [placeholderStreet]="'Snappie laan 4'"
-            [placeholderHouseNumber]="'huisnummer...'"
-            [placeholderPostalCode]="'postcode...'"
-            [address]="address"
-            (onAddress)="address = $event">
+        <div class="form-group label-floating">
+          <label class="control-label">Address</label>
+          <address-autocomplete [country]="country" [placeholderStreet]="'Snappcar street 6'" [placeholderHouseNumber]="'housenumber...'" [placeholderPostalCode]="'postalcode...'" [address]="address" (onAddress)="address = $event">
           </address-autocomplete>
         </div>
-      </div>
-    </form>
-  </div>
-</div>
-<div class="container" *ngIf="address">
-    <div class="well">
-        <h1 >
-          {{address.street}} {{address.houseNumber}}<br>
-          {{address.postalCode}} {{address.city}}<br>
-          {{address.country}}
-        </h1>
+      </form>
     </div>
+  </div>
+
+  <div class="row">
+    <div *ngIf="address" class="well col-md-6">
+      <h1>
+        {{address.street}} {{address.houseNumber}}<br>
+        {{address.postalCode}} {{address.city}}<br>
+        {{address.country}}
+      </h1>
+    </div>
+  </div>
 </div>
