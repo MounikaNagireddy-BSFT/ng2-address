@@ -19,7 +19,14 @@
       <div class="form-group">
         <label class="control-label col-md-2">Straat &amp; huisnummer</label>
         <div class="col-md-10">
-          <address-autocomplete [country]="country" [placeholder]="'Snappie laan 4'" [address]="address" (onAddress)="address = $event"></address-autocomplete>
+          <address-autocomplete
+            [country]="country"
+            [placeholderStreet]="'Snappie laan 4'"
+            [placeholderHouseNumber]="'huisnummer...'"
+            [placeholderPostalCode]="'postcode...'"
+            [address]="address"
+            (onAddress)="address = $event">
+          </address-autocomplete>
         </div>
       </div>
     </form>

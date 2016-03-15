@@ -6,6 +6,7 @@ import {
 
 import {GooglePlacesAutocompleteService} from './google-places-autocomplete.service';
 import {PlaceSuggestion} from './place-suggestion';
+import {PlaceDetails} from './place-details';
 import {Address} from './address';
 import {IAutocompleteService} from './autocomplete-service';
 
@@ -22,9 +23,13 @@ const KEYS = {
     providers: [GooglePlacesAutocompleteService]
 })
 export class AddressAutocompleteComponent {
-    @Input() private placeholder: string;
+    @Input() private placeholderStreet: string;
+    @Input() private placeholderHouseNumber: string;
+    @Input() private placeholderPostalCode: string;
     @Input() private country: string;
     @Output() public onAddress = new EventEmitter<Address>();
+
+    public address: Address;
 
     private autoCompleteService: IAutocompleteService;
     private applicationRef: ApplicationRef;
@@ -32,8 +37,9 @@ export class AddressAutocompleteComponent {
 
     private selectedSuggestion: PlaceSuggestion;
     private suggestions: PlaceSuggestion[];
-    private address: Address;
     private inputString: string;
+    private manualHouseNumber: string;
+    private manualPostalCode: string;
 
     constructor(
         el: ElementRef,
@@ -126,29 +132,47 @@ export class AddressAutocompleteComponent {
         // Get the address details (components) based on the google placeid
         let placeId = this.selectedSuggestion.id;
 
-        this.autoCompleteService.getSuggestionDetails(placeId).then(placeDetail => {
+        return this.autoCompleteService.getSuggestionDetails(placeId).then(placeDetail => {
           let address : Address = placeDetail.address;
+
+          if(address.isComplete){
+            // remove manual housenumber, postalcode override
+            this.manualHouseNumber = '';
+            this.manualPostalCode = '';
+          }
 
           this.address = address;
           this.onAddress.emit(address);
         });
     }
 
-    private extraFieldChanged (addressComponentName: string, value: string){
-        this.address[addressComponentName] = value;
+    private onBlurHouseNumber (houseNumber: string){
+        this.manualHouseNumber = houseNumber;
 
-        if(addressComponentName === 'houseNumber'){
+        // copy the current address to get a new search string containing the housenumber.
+        let tempAddress = new Address();
+        Object.assign(tempAddress, this.address);
 
-          let description = this.address.toString();
+        tempAddress.houseNumber = houseNumber;
 
-          this.autoCompleteService.getSuggestions(description).then(results => {
-              if (results.length < 1) {
-                  return;
+        this.autoCompleteService.getSuggestions(tempAddress.toString()).then((results: PlaceSuggestion[]) => {
+            let bestSuggestion = results[0];
+            this.autoCompleteService.getSuggestionDetails(bestSuggestion.id).then((placeDetail: PlaceDetails) => {
+
+              if(placeDetail.address.isComplete()){
+                this.selectedSuggestion = bestSuggestion;
+                this.useCurrentSuggestion();
+              } else {
+                this.address.houseNumber = houseNumber;
+                this.onAddress.emit(this.address);
               }
-              debugger;
-              this.selectedSuggestion = results[0];
-              this.useCurrentSuggestion();
-          });
-        }
+            });
+        });
+    }
+
+    private onBlurPostalCode (postalCode: string) {
+      this.manualPostalCode = postalCode;
+      this.address.postalCode = postalCode;
+      this.onAddress.emit(this.address);
     }
 }

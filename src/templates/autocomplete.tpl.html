@@ -2,7 +2,7 @@
   class="form-control"
   (blur)="useCurrentSuggestion()"
   (keyup)="onKeyUp($event.keyCode, fieldStreet)"
-  [attr.placeholder]="placeholder"
+  [attr.placeholder]="placeholderStreet"
   [(ngModel)]="inputString" />
 
 <div class="autocomplete-container">
@@ -17,18 +17,20 @@
 
 <input #fieldHouseNumber
   *ngIf="address"
-  [class.hidden]="address.houseNumber"
-  [ngModel]="address.houseNumber"
+  [class.hidden]="address.houseNumber && !manualHouseNumber"
   (keyup.enter)="fieldHouseNumber.blur()"
-  (blur)="extraFieldChanged('houseNumber', fieldHouseNumber.value)"
-  placeholder="huisnummer"
+  [ngModel]="manualHouseNumber"
+  [attr.placeholder]="placeholderHouseNumber"
+  (blur)="onBlurHouseNumber(fieldHouseNumber.value)"
+  [attr.placeholder]="placeholderHouseNumber"
   class="form-control" />
 
 <input #fieldPostalCode
   *ngIf="address"
-  [class.hidden]="address.postalCode"
-  [ngModel]="address.postalCode"
+  [class.hidden]="!manualHouseNumber"
+  [ngModel]="manualPostalCode"
+  [attr.placeholder]="placeholderPostalCode"
   (keyup.enter)="fieldPostalCode.blur()"
-  (blur)="extraFieldChanged('postalCode', fieldPostalCode.value)"
-  placeholder="Postcode"
+  (blur)="onBlurPostalCode(fieldPostalCode.value)"
+  [attr.placeholder]="placeholderPostalCode"
   class="form-control" />
