@@ -19,7 +19,11 @@ const KEYS = {
 @Component({
     selector: 'address-autocomplete',
     templateUrl: 'templates/autocomplete.tpl.html',
-    styleUrls: ['styles/autocomplete.style.css'],
+    styles: [`
+      .selected {
+        background-color: hsla(200, 100%, 50%, 0.2);
+      }
+    `],
     providers: [GooglePlacesAutocompleteService]
 })
 export class AddressAutocompleteComponent {
