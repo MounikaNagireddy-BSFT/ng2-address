@@ -22,4 +22,4 @@ Open url in browser: http://localhost:8080/dist/index.html
 ## Planning ##
 * Create a nicer distribution of this lib. Make it easier to implement.
 * Remove some dependencies
-* Switch to Webpack
+* Perhaps switch to Webpack
