@@ -37,7 +37,6 @@ export class AddressAutocompleteComponent {
     public address: Address;
 
     private autoCompleteService: IAutocompleteService;
-    private el: ElementRef;
 
     private selectedSuggestion: PlaceSuggestion;
     private suggestions: PlaceSuggestion[];
@@ -46,10 +45,8 @@ export class AddressAutocompleteComponent {
     private manualPostalCode: string;
 
     constructor(
-        el: ElementRef,
         autoCompleteService: GooglePlacesAutocompleteService
     ) {
-        this.el = el;
         this.autoCompleteService = autoCompleteService;
         this.suggestions = [];
     }
