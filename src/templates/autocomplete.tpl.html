@@ -5,7 +5,7 @@
   [attr.placeholder]="placeholderStreet"
   [(ngModel)]="inputString" />
 
-<div class="autocomplete-container">
+<div *ngIf="suggestions.length" class="autocomplete-container">
   <div *ngFor="#suggestion of suggestions">
     <div
       [class.selected]="suggestion === selectedSuggestion"
