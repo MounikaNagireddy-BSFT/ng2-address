@@ -2,6 +2,9 @@ var gulp = require('gulp');
 var ts = require('gulp-typescript');
 var merge = require('merge2');
 var del = require('del');
+var connect = require('gulp-connect');
+var open = require('gulp-open');
+var runSequence = require('run-sequence');
 
 var tsProject = ts.createProject('tsconfig.json');
 
@@ -23,13 +26,41 @@ gulp.task('copy-files', () => {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('watch', () => {
-  gulp.watch('src/**/*.ts', ['compile-scripts']);
-  gulp.watch(['src/**/*.html', 'src/**/*.css'], ['copy-files']);
-})
+gulp.task('reload', () => {
+  return gulp
+    .src(['dist/**'])
+    .pipe(connect.reload());
+});
 
-gulp.task('clean', function() {
+gulp.task('watch', () => {
+  gulp.watch('src/**/*.ts', ['compile-scripts', 'reload']);
+  gulp.watch(['src/**/*.html', 'src/**/*.css'], ['copy-files', 'reload']);
+});
+
+gulp.task('clean', () => {
   return del(['dist']);
 });
 
-gulp.task('default', ['compile-scripts', 'copy-files', 'watch']);
+gulp.task('connect', () => {
+  connect.server({
+    livereload: true
+  });
+
+  return gulp.src(__filename)
+    .pipe(open({
+      uri: 'http://localhost:8080/dist'
+    }));
+});
+
+gulp.task('build', done => {
+  runSequence(
+    'clean',
+    ['compile-scripts', 'copy-files'],
+  done)
+});
+
+gulp.task('default', () => {
+  runSequence(
+    'build',
+    ['connect', 'watch']);
+  });

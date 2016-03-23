@@ -3,8 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "postinstall": "npm run typings install",
-    "typings": "typings",
-    "serve": "autoreload-server -b -w \"dist\""
+    "typings": "typings"
   },
   "license": "ISC",
   "dependencies": {
@@ -19,9 +18,11 @@
   "devDependencies": {
     "del": "^2.2.0",
     "gulp": "^3.9.1",
+    "gulp-connect": "^3.2.0",
+    "gulp-open": "^1.0.0",
     "gulp-typescript": "^2.12.1",
     "merge2": "^1.0.1",
-    "simple-autoreload-server": "^0.1.6",
+    "run-sequence": "^1.1.5",
     "typings": "^0.6.10"
   }
 }
