@@ -1,28 +1,37 @@
 {
   "name": "ng2-address",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "repository": {
+    "url": "https://github.com/SnappCar/ng2-address"
+  },
   "scripts": {
-    "postinstall": "npm run typings install",
-    "typings": "typings"
+    "postinstall": "typings install",
+    "build": "tsc -p src",
+    "tsc:w": "tsc -w",
+    "lite": "lite-server",
+    "start": "concurrent \"npm run tsc:w\" \"npm run lite\" "
   },
   "license": "ISC",
-  "dependencies": {
-    "angular2": "^2.0.0-beta.11",
-    "es6-promise": "^3.0.2",
-    "es6-shim": "^0.35.0",
-    "reflect-metadata": "0.1.2",
-    "rxjs": "5.0.0-beta.2",
-    "systemjs": "^0.19.24",
-    "zone.js": "^0.6.5"
-  },
+  "typings": "./ng2-address.d.ts",
   "devDependencies": {
+    "concurrently": "1.0.0",
     "del": "^2.2.0",
     "gulp": "^3.9.1",
-    "gulp-connect": "^3.2.0",
+    "gulp-connect": "^3.2.2",
     "gulp-open": "^1.0.0",
     "gulp-typescript": "^2.12.1",
+    "lite-server": "2.1.0",
     "merge2": "^1.0.1",
+    "reflect-metadata": "0.1.2",
     "run-sequence": "^1.1.5",
-    "typings": "^0.6.10"
+    "rxjs": "5.0.0-beta.2",
+    "systemjs": "^0.19.24",
+    "typings": "^0.6.10",
+    "zone.js": "^0.6.5"
+  },
+  "peerDependencies": {
+    "es6-shim": "^0.35.0",
+    "es6-promise": "^3.0.2",
+    "angular2": "^2.0.0-beta.12"
   }
 }

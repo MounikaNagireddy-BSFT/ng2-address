@@ -6,39 +6,34 @@ var connect = require('gulp-connect');
 var open = require('gulp-open');
 var runSequence = require('run-sequence');
 
-var tsProject = ts.createProject('tsconfig.json');
+var tsProject = ts.createProject('tsconfig.json', {
+  noExternalResolve: false
+});
 
-gulp.task('compile-scripts', () => {
+gulp.task('build-lib', () => {
   // Include definition files
-  var tsResult = gulp.src(['src/app/**/*.ts'])
+  var tsResult = tsProject.src()
     .pipe(ts(tsProject));
 
   return merge([ // Merge the two output streams, so this task is finished when the IO of both operations are done.
-    tsResult.dts.pipe(gulp.dest('dist/definitions')),
-    tsResult.js.pipe(gulp.dest('dist/js'))
+    tsResult.dts.pipe(gulp.dest('.')),
+    tsResult.js.pipe(gulp.dest('.'))
   ]);
-});
-
-// Copies the styles and templates to the distribution folder
-gulp.task('copy-files', () => {
-  return gulp
-    .src(['src/**/*.html', 'src/**/*.css'])
-    .pipe(gulp.dest('dist'));
 });
 
 gulp.task('reload', () => {
   return gulp
-    .src(['dist/**'])
+    .src(['lib/**', 'example/**'])
     .pipe(connect.reload());
 });
 
 gulp.task('watch', () => {
-  gulp.watch('src/**/*.ts', ['compile-scripts', 'reload']);
-  gulp.watch(['src/**/*.html', 'src/**/*.css'], ['copy-files', 'reload']);
+  gulp.watch('src/**/*.ts', ['build-lib', 'reload']);
+  gulp.watch(['src/**/*.html', 'src/**/*.css'], ['reload']);
 });
 
 gulp.task('clean', () => {
-  return del(['dist']);
+  return del(['lib']);
 });
 
 gulp.task('connect', () => {
@@ -46,17 +41,17 @@ gulp.task('connect', () => {
     livereload: true
   });
 
-  return gulp.src(__filename)
+  return gulp.src('./example/index.html')
     .pipe(open({
-      uri: 'http://localhost:8080/dist'
+      uri: 'http://localhost:8080/example'
     }));
 });
 
 gulp.task('build', done => {
   runSequence(
     'clean',
-    ['compile-scripts', 'copy-files'],
-  done)
+    'build-lib',
+    done)
 });
 
 gulp.task('default', () => {

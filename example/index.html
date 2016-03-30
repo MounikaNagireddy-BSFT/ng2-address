@@ -3,11 +3,11 @@
   <title>ng2-address</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <script src="../node_modules/es6-shim/es6-shim.min.js"></script>
-  <script src="../node_modules/systemjs/dist/system-polyfills.js"></script>
+  <script src="../node_modules/es6-shim/es6-shim.js"></script>
+  <script src="../node_modules/systemjs/dist/system-polyfills.src.js"></script>
+  <script src="../node_modules/systemjs/dist/system.src.js"></script>
 
   <script src="../node_modules/angular2/bundles/angular2-polyfills.js"></script>
-  <script src="../node_modules/systemjs/dist/system.src.js"></script>
   <script src="../node_modules/rxjs/bundles/Rx.js"></script>
   <script src="../node_modules/angular2/bundles/angular2.dev.js"></script>
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrsKDKcBsPJfv5XD_V0OROqcVpNBYLf-Y&libraries=places"></script>
@@ -21,20 +21,28 @@
   <script>
     System.config({
       packages: {
-        'js': {
+        'app': {
+          main: 'main',
+          format: 'register',
+          defaultExtension: 'js'
+        },
+        'ng2-address': {
           format: 'register',
           defaultExtension: 'js'
         }
+      },
+      paths: {
+        'ng2-address': '../lib/ng2-address.js'
       }
     });
-    System.import('js/main.js')
+    System.import('app')
       .then(null, console.error.bind(console));
   </script>
 
 </head>
 
 <body>
-  <my-app>Loading...</my-app>
+  <ng2-address-example></ng2-address-example>
 </body>
 
 </html>

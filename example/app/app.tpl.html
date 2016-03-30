@@ -16,7 +16,13 @@
         </div>
         <div class="form-group label-floating">
           <label class="control-label">Address</label>
-          <address-autocomplete [country]="country" [placeholderStreet]="'Snappcar street 6'" [placeholderHouseNumber]="'housenumber...'" [placeholderPostalCode]="'postalcode...'" [address]="address" (onAddress)="address = $event">
+          <address-autocomplete
+            [country]="country"
+            [placeholderStreet]="'Snappcar street 6'"
+            [placeholderHouseNumber]="'housenumber...'"
+            [placeholderPostalCode]="'postalcode...'"
+            [address]="address"
+            (onAddress)="address = $event">
           </address-autocomplete>
         </div>
       </form>

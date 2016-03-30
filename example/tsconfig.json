@@ -5,12 +5,12 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "declaration": true,
-    "outFile": "./lib/ng2-address.js"
+    "declaration": true
   },
   "files": [
-    "./typings/browser.d.ts",
-    "./src/ng2-address.ts"
+    "./app/main.ts",
+    "./app/app.component.ts",
+    "../typings/browser.d.ts"
   ],
   "exclude": [
     "node_modules"

@@ -18,7 +18,42 @@ const KEYS = {
 
 @Component({
     selector: 'address-autocomplete',
-    templateUrl: 'templates/autocomplete.tpl.html',
+    template: `<input #fieldStreet
+      class="form-control"
+      (blur)="useCurrentSuggestion()"
+      (keyup)="onKeyUp($event.keyCode, fieldStreet)"
+      [attr.placeholder]="placeholderStreet"
+      [(ngModel)]="inputString" />
+
+    <div *ngIf="suggestions.length" class="autocomplete-container">
+      <div *ngFor="#suggestion of suggestions">
+        <div
+          [class.selected]="suggestion === selectedSuggestion"
+          (mouseover)="selectedSuggestion = suggestion">
+          {{suggestion}}
+        </div>
+      </div>
+    </div>
+
+    <input #fieldHouseNumber
+      *ngIf="address"
+      [class.hidden]="address.houseNumber && !manualHouseNumber"
+      (keyup.enter)="fieldHouseNumber.blur()"
+      [ngModel]="manualHouseNumber"
+      [attr.placeholder]="placeholderHouseNumber"
+      (blur)="onBlurHouseNumber(fieldHouseNumber.value)"
+      [attr.placeholder]="placeholderHouseNumber"
+      class="form-control" />
+
+    <input #fieldPostalCode
+      *ngIf="address"
+      [class.hidden]="!manualHouseNumber"
+      [ngModel]="manualPostalCode"
+      [attr.placeholder]="placeholderPostalCode"
+      (keyup.enter)="fieldPostalCode.blur()"
+      (blur)="onBlurPostalCode(fieldPostalCode.value)"
+      [attr.placeholder]="placeholderPostalCode"
+      class="form-control" />`,
     styles: [`
       .selected {
         background-color: hsla(200, 100%, 50%, 0.2);
