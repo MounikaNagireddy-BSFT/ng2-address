@@ -22,7 +22,6 @@
     System.config({
       packages: {
         'app': {
-          main: 'main',
           format: 'register',
           defaultExtension: 'js'
         },
@@ -35,7 +34,7 @@
         'ng2-address': '../lib/ng2-address.js'
       }
     });
-    System.import('app')
+    System.import('app/main')
       .then(null, console.error.bind(console));
   </script>
 
