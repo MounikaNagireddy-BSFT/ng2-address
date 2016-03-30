@@ -4,8 +4,7 @@
     "module": "system",
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "declaration": true
+    "experimentalDecorators": true
   },
   "files": [
     "./app/main.ts",
