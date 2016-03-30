@@ -12,7 +12,8 @@
     "start": "concurrent \"npm run tsc:w\" \"npm run lite\" "
   },
   "license": "ISC",
-  "typings": "./ng2-address.d.ts",
+  "main": "./lib/ng2-address.js",
+  "typings": "./lib/ng2-address.d.ts",
   "devDependencies": {
     "concurrently": "1.0.0",
     "del": "^2.2.0",
