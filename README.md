@@ -13,15 +13,4 @@ Start gulp to build and watch for changes:
 gulp
 ```
 
-To start the application, fire up the http server:
-```
-npm run serve
-```
-Open url in browser: http://localhost:8080/dist/index.html
-
 Make sure you change the Google Maps API key to your own.
-
-## Planning ##
-* Create a nicer distribution of this lib. Make it easier to implement.
-* Remove some dependencies
-* Perhaps switch to Webpack
