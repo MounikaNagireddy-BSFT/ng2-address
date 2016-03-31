@@ -4,6 +4,7 @@
   "repository": {
     "url": "https://github.com/SnappCar/ng2-address"
   },
+  "author": "Tomas Klingen",
   "scripts": {
     "postinstall": "typings install",
     "build": "tsc",
@@ -21,6 +22,7 @@
     "gulp-connect": "^3.2.2",
     "gulp-open": "^1.0.0",
     "gulp-typescript": "^2.12.1",
+    "jasmine-core": "^2.4.1",
     "lite-server": "2.1.0",
     "merge2": "^1.0.1",
     "reflect-metadata": "0.1.2",
@@ -28,11 +30,12 @@
     "rxjs": "5.0.0-beta.2",
     "systemjs": "^0.19.24",
     "typings": "^0.6.10",
-    "zone.js": "^0.6.5"
-  },
-  "peerDependencies": {
+    "zone.js": "^0.6.5",
     "es6-shim": "^0.35.0",
     "es6-promise": "^3.0.2",
+    "angular2": "^2.0.0-beta.12"
+  },
+  "peerDependencies": {
     "angular2": "^2.0.0-beta.12"
   }
 }
