@@ -66,6 +66,14 @@ declare module "google-places-autocomplete.service" {
         private parseGooglePlaceResult(placeResult);
     }
 }
+declare module "focus-directive" {
+    import { ElementRef } from 'angular2/core';
+    export class FocusDirective {
+        private el;
+        constructor(el: ElementRef);
+        ngAfterViewInit(): void;
+    }
+}
 declare module "address-autocomplete.component" {
     import { EventEmitter } from 'angular2/core';
     import { GooglePlacesAutocompleteService } from "google-places-autocomplete.service";

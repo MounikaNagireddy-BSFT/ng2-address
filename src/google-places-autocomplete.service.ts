@@ -57,7 +57,7 @@ export class GooglePlacesAutocompleteService implements IAutocompleteService {
             const address = this.parseGooglePlaceResult(placeResult);
             resolve(address);
           } else {
-            reject();
+            reject(status);
           }
         })
       );
