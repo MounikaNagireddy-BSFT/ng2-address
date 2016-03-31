@@ -121,6 +121,7 @@ export class AddressAutocompleteComponent {
 
     // User cleared the input field, or this is the first key pressed (which isnt a character).
     if (!this.inputString) {
+      this.address = null;
       this.selectedSuggestion = null;
       this.suggestions = [];
       return;
@@ -193,6 +194,7 @@ export class AddressAutocompleteComponent {
 
     this.autoCompleteService.getSuggestions(`${houseNumber} ${this.inputString}`).then((results: PlaceSuggestion[]) => {
       let bestSuggestion = results[0];
+
       this.autoCompleteService.getSuggestionDetails(bestSuggestion.id).then((placeDetail: PlaceDetails) => {
         // The new suggestion is based on street + housenumber.
         // In 99% of the cases this means the autocomplete engine found an postalcode as well.
@@ -208,8 +210,10 @@ export class AddressAutocompleteComponent {
   }
 
   private onBlurPostalCode(postalCode: string) {
-    this.manualPostalCode = postalCode;
-    this.address.postalCode = postalCode;
-    this.onAddress.emit(this.address);
+    if (postalCode) {
+      this.manualPostalCode = postalCode;
+      this.address.postalCode = postalCode;
+      this.onAddress.emit(this.address);
+    }
   }
 }
