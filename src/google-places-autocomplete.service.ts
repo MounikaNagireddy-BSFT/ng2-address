@@ -31,7 +31,7 @@ export class GooglePlacesAutocompleteService implements IAutocompleteService {
       types: ['address']
     };
 
-    return new Promise<PlaceSuggestion[]>((resolve, reject) =>
+    return new Promise<PlaceSuggestion[]>((resolve, reject) => {
       this._googleAutocomplete.getPlacePredictions(request, (results, status) => {
 
         if (status === google.maps.places.PlacesServiceStatus.OK) {
@@ -40,8 +40,8 @@ export class GooglePlacesAutocompleteService implements IAutocompleteService {
         } else {
           reject(status);
         }
-      })
-      );
+      });
+    });
   }
 
   /**

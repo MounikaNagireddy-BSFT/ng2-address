@@ -95,15 +95,14 @@ declare module "address-autocomplete.component" {
         private ngOnInit();
         private ngOnChanges(changes);
         private onKeyUp(keyCode, fieldStreet);
-        private showSuggestions(str);
+        private onChangeInput(str, inputField);
+        private scrollToElement(element);
         /**
          * Use arrow keys to select previous or next suggestion
          */
         private updateSuggestionSelection(keyCode);
-        /**
-         * When the user
-         */
-        private useCurrentSuggestion();
+        private onBlurStreet();
+        private useSuggestion(suggestion);
         private onBlurHouseNumber(houseNumber);
         private onBlurPostalCode(postalCode);
     }
