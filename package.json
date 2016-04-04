@@ -11,7 +11,7 @@
     "lite": "lite-server",
     "start": "concurrent \"npm run tsc:w\" \"npm run lite\" "
   },
-  "license": "ISC",
+  "license": "MIT",
   "main": "./lib/ng2-address.js",
   "typings": "./lib/ng2-address.d.ts",
   "devDependencies": {
