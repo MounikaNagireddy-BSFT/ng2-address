@@ -157,7 +157,7 @@ export class AddressAutocompleteComponent {
     }
 
     window.scrollTo(0, curtop);
-}
+  }
 
   /**
    * Use arrow keys to select previous or next suggestion
@@ -178,10 +178,10 @@ export class AddressAutocompleteComponent {
   }
 
   private onBlurStreet() {
-      if (this.selectedSuggestion) {
+    if (this.selectedSuggestion) {
 
-        this.useSuggestion(this.selectedSuggestion);
-      }
+      this.useSuggestion(this.selectedSuggestion);
+    }
   }
 
   private useSuggestion(suggestion: PlaceSuggestion) {
