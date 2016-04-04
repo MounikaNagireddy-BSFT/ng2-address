@@ -7,7 +7,7 @@ If you choose to use the Google Autocomplete service, make sure you change the G
 
 ## Installation
 
-`npm install ng2-address --save-dev`
+`npm install ng2-address --save`
 
 From within your typescript project, it's possible to just import from the 'ng2-address' module.
 
