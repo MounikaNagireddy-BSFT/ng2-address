@@ -1,0 +1,62 @@
+<html>
+<head>
+  <title>ng2-address</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/es6-shim/0.35.0/es6-shim.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.26/system-polyfills.src.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.26/system.src.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.14/angular2-polyfills.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.14/Rx.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/2.0.0-beta.14/angular2.dev.js"></script>
+  
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCrsKDKcBsPJfv5XD_V0OROqcVpNBYLf-Y&libraries=places"></script>
+
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.8/css/bootstrap-material-design.css" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.8/css/ripples.css" type="text/css">
+
+  <style>
+    .autocomplete-container {
+      position: absolute;
+      width: 100%;
+      background-color: #fff;
+      padding: 4px;
+      z-index: 2;
+    }
+    .autocomplete-container > div > div {
+      padding: 8px 0;
+      cursor: pointer;
+    }
+  </style>
+
+  <script>
+    System.config({
+      packages: {
+        'app': {
+          format: 'register',
+          defaultExtension: 'js'
+        },
+        'ng2-address': {
+          format: 'register',
+          defaultExtension: 'js'
+        }
+      },
+      paths: {
+        'ng2-address': 'https://raw.githubusercontent.com/SnappCar/ng2-address/master/lib/ng2-address.js'
+      }
+    });
+    System.import('app/main')
+      .then(null, console.error.bind(console));
+  </script>
+
+</head>
+
+<body>
+  <ng2-address-example></ng2-address-example>
+</body>
+
+</html>
