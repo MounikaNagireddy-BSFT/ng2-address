@@ -1,0 +1,6 @@
+{
+  "name": "Ng2-address",
+  "tagline": "SnappCar angular2 address component",
+  "body": "# ng2-address #\r\n\r\nThis Angular 2 component helps the user to fill in street address. It uses Googles Places API to get suggestions, and shows postalcode or housenumber fields if that info was missing from the returned autocomplete suggestion.\r\n\r\nIf you choose to use the Google Autocomplete service, make sure you change the Google Maps API key to your own.\r\n\r\n\r\n## Installation\r\n\r\n`npm install ng2-address --save`\r\n\r\nFrom within your typescript project, it's possible to just import from the 'ng2-address' module.\r\n\r\n\r\n`import {AddressAutocompleteComponent} from 'ng2-address';`\r\n\r\nSee /example folder.\r\n\r\n\r\n## Example\r\n\r\nThe main component of the lib is `AddressAutocompleteComponent`.\r\n\r\n```\r\n<address-autocomplete\r\n  [country]=\"'NL'\"\r\n  [placeholderStreet]=\"'SnappCar Street 6...'\"\r\n  [placeholderHouseNumber]=\"'housenumber...'\"\r\n  [placeholderPostalCode]=\"'postalcode...'\"\r\n  (onAddress)=\"addressChangedHandler\">\r\n</address-autocomplete>\r\n```\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
