@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="well col-md-6">
+      <div class="page-header">
+        <h1>ng2-address</h1>
+      </div>
+
+      <form>
+        <div class="form-group label-floating">
+          <label class="control-label">Country</label>
+          <select [ngModel]="country" (ngModelChange)="country = $event; address = null;" class="form-control">
+            <option value="NL">Netherlands</option>
+            <option value="SE">Sweden</option>
+            <option value="DK">Denmark</option>
+          </select>
+        </div>
+        <div class="form-group label-floating">
+          <label class="control-label">Address</label>
+          <address-autocomplete
+            [country]="country"
+            [placeholderStreet]="'SnappCar Street 6...'"
+            [placeholderHouseNumber]="'housenumber...'"
+            [placeholderPostalCode]="'postalcode...'"
+            [address]="address"
+            (onAddress)="address = $event">
+          </address-autocomplete>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="row">
+    <div *ngIf="address" class="well col-md-6">
+      <div class="row">
+        <div class="col-sm-1">
+          <h1><i class="material-icons">place</i></h1>
+        </div>
+        <div class="col-sm-11">
+          <h4>
+          {{address.street}} {{address.houseNumber}}<br>
+          {{address.postalCode}} {{address.city}}<br>
+          {{address.country}}
+        </h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
