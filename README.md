@@ -30,3 +30,7 @@ The main component of the lib is `AddressAutocompleteComponent`.
   (onAddress)="addressChangedHandler">
 </address-autocomplete>
 ```
+
+## Roadmap ##
+* Switch from promises to observables.
+* Transform to directive instead of component.
