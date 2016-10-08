@@ -49,7 +49,7 @@ export class AddressAutocompleteComponent implements OnInit, OnChanges {
   private manualHouseNumber: string;
   private manualPostalCode: string;
 
-  constructor(autoCompleteService: GooglePlacesAutocompleteService, focusDirective: FocusDirective) {
+  constructor(autoCompleteService: GooglePlacesAutocompleteService) {
     this.autoCompleteService = autoCompleteService;
     this.suggestions = [];
   }
