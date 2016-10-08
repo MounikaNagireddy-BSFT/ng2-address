@@ -5,7 +5,7 @@ import {
   OnChanges,
   OnInit,
   Output,
-  SimpleChange
+  SimpleChanges
 } from '@angular/core';
 
 import {GooglePlacesAutocompleteService} from './google-places-autocomplete.service';
@@ -13,7 +13,6 @@ import {PlaceSuggestion} from './place-suggestion';
 import {PlaceDetails} from './place-details';
 import {Address} from './address';
 import {IAutocompleteService} from './autocomplete-service';
-import {FocusDirective} from './focus-directive';
 
 const KEYS = {
   ARROW_UP: 38,
@@ -58,12 +57,9 @@ export class AddressAutocompleteComponent implements OnInit, OnChanges {
     this.autoCompleteService.country = 'DE'; // this.country;
   }
 
-  ngOnChanges(changes: {
-    country: SimpleChange,
-    address: SimpleChange
-  }) {
-    if (changes.country) {
-      this.autoCompleteService.country = changes.country.currentValue;
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['country']) {
+      this.autoCompleteService.country = changes['country'].currentValue;
       this.inputString = null;
       this.address = null;
     }
