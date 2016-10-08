@@ -2,7 +2,7 @@ import {
 Component, Inject, Input,
 Output, EventEmitter, ElementRef,
 SimpleChange
-} from 'angular2/core';
+} from '@angular/core';
 
 import {GooglePlacesAutocompleteService} from './google-places-autocomplete.service';
 import {PlaceSuggestion} from './place-suggestion';
@@ -19,7 +19,6 @@ const KEYS = {
 
 @Component({
   selector: 'address-autocomplete',
-  directives: [FocusDirective],
   template: `<input #fieldStreet
       (blur)="onBlurStreet()"
       (keyup)="onKeyUp($event.keyCode, fieldStreet)"
@@ -88,7 +87,8 @@ export class AddressAutocompleteComponent {
   private manualPostalCode: string;
 
   constructor(
-    autoCompleteService: GooglePlacesAutocompleteService
+    autoCompleteService: GooglePlacesAutocompleteService,
+    focusDirective: FocusDirective
     ) {
     this.autoCompleteService = autoCompleteService;
     this.suggestions = [];

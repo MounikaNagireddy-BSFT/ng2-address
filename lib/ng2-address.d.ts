@@ -67,7 +67,7 @@ declare module "google-places-autocomplete.service" {
     }
 }
 declare module "focus-directive" {
-    import { ElementRef } from 'angular2/core';
+    import { ElementRef } from '@angular/core';
     export class FocusDirective {
         private el;
         constructor(el: ElementRef);
@@ -75,9 +75,10 @@ declare module "focus-directive" {
     }
 }
 declare module "address-autocomplete.component" {
-    import { EventEmitter } from 'angular2/core';
+    import { EventEmitter } from '@angular/core';
     import { GooglePlacesAutocompleteService } from "google-places-autocomplete.service";
     import { Address } from "address";
+    import { FocusDirective } from "focus-directive";
     export class AddressAutocompleteComponent {
         onAddress: EventEmitter<Address>;
         placeholderStreet: string;
@@ -91,7 +92,7 @@ declare module "address-autocomplete.component" {
         private inputString;
         private manualHouseNumber;
         private manualPostalCode;
-        constructor(autoCompleteService: GooglePlacesAutocompleteService);
+        constructor(autoCompleteService: GooglePlacesAutocompleteService, focusDirective: FocusDirective);
         private ngOnInit();
         private ngOnChanges(changes);
         private onKeyUp(keyCode, fieldStreet);
@@ -108,10 +109,6 @@ declare module "address-autocomplete.component" {
     }
 }
 declare module "ng2-address" {
-    export * from "address-autocomplete.component";
-    export * from "address";
-    export * from "autocomplete-service";
-    export * from "google-places-autocomplete.service";
-    export * from "place-details";
-    export * from "place-suggestion";
+    export class AppModule {
+    }
 }

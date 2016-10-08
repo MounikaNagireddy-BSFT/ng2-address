@@ -1,6 +1,20 @@
-export * from './address-autocomplete.component';
-export * from './address';
-export * from './autocomplete-service';
-export * from './google-places-autocomplete.service';
-export * from './place-details';
-export * from './place-suggestion';
+import {AddressAutocompleteComponent} from './address-autocomplete.component';
+import {Address} from './address';
+import {PlaceDetails} from './place-details';
+import {PlaceSuggestion} from './place-suggestion';
+import {GooglePlacesAutocompleteService} from './google-places-autocomplete.service';
+
+import {NgModule} from '@angular/core';
+
+@NgModule({
+  imports: [],
+  declarations: [
+      AddressAutocompleteComponent,
+      Address,
+      PlaceDetails,
+      PlaceSuggestion],
+  bootstrap: [AddressAutocompleteComponent],
+  providers: [GooglePlacesAutocompleteService]
+})
+export class AppModule {
+}

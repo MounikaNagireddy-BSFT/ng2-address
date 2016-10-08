@@ -1,4 +1,4 @@
-import { Injectable } from 'angular2/core';
+import { Injectable } from '@angular/core';
 import { PlaceSuggestion, PlaceType } from './place-suggestion';
 import { PlaceDetails } from './place-details';
 import { IAutocompleteService } from './autocomplete-service';
