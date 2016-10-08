@@ -6,7 +6,7 @@
   "apps": [
     {
       "root": "src",
-      "outDir": "lib",
+      "outDir": "example2",
       "assets": "assets",
       "index": "index.html",
       "main": "main.ts",
