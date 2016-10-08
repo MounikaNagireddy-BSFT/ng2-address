@@ -22,8 +22,8 @@ const KEYS = {
 };
 
 @Component({
-  selector: 'address-autocomplete',
-  templateUrl: 'address-autocomplete.entryComponents.html',
+  selector: 'ng2-address-autocomplete',
+  templateUrl: 'address-autocomplete.component.html',
   styles: [`
       .selected {
         background-color: hsla(200, 100%, 50%, 0.2);
@@ -44,7 +44,7 @@ export class AddressAutocompleteComponent implements OnInit, OnChanges {
   private autoCompleteService: IAutocompleteService;
 
   private selectedSuggestion: PlaceSuggestion;
-  private suggestions: PlaceSuggestion[];
+  suggestions: PlaceSuggestion[];
   private inputString: string;
   private manualHouseNumber: string;
   private manualPostalCode: string;

@@ -1,18 +1,11 @@
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 import {AddressAutocompleteComponent} from './address-autocomplete.component';
-import {Address} from './address';
-import {PlaceDetails} from './place-details';
-import {PlaceSuggestion} from './place-suggestion';
 import {GooglePlacesAutocompleteService} from './google-places-autocomplete.service';
 
-import {NgModule} from '@angular/core';
-
 @NgModule({
-  imports: [],
-  declarations: [
-      AddressAutocompleteComponent,
-      Address,
-      PlaceDetails,
-      PlaceSuggestion],
+  imports: [BrowserModule],
+  declarations: [AddressAutocompleteComponent],
   bootstrap: [AddressAutocompleteComponent],
   providers: [GooglePlacesAutocompleteService]
 })

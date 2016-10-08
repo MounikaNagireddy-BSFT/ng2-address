@@ -6,17 +6,15 @@
   "apps": [
     {
       "root": "src",
-      "outDir": "dist",
+      "outDir": "lib",
       "assets": "assets",
       "index": "index.html",
       "main": "main.ts",
       "test": "test.ts",
       "tsconfig": "tsconfig.json",
-      "prefix": "app",
+      "prefix": "ng2-address",
       "mobile": false,
-      "styles": [
-        "styles.css"
-      ],
+      "styles": [],
       "scripts": [],
       "environments": {
         "source": "environments/environment.ts",

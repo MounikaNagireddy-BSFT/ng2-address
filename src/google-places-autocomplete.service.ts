@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { PlaceSuggestion, PlaceType } from './place-suggestion';
 import { PlaceDetails } from './place-details';
 import { IAutocompleteService } from './autocomplete-service';
-import { Address } from './address';
 
 // Service that wraps the google autocomplete service.
 // https://developers.google.com/maps/documentation/javascript/reference#AutocompleteService

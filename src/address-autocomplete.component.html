@@ -1,18 +1,37 @@
-<input #fieldStreet (blur)="onBlurStreet()" (keyup)="onKeyUp($event.keyCode, fieldStreet)" [attr.placeholder]="placeholderStreet"
-    [ngModel]="inputString" autocomplete="dummy" class="form-control" />
+<input #fieldStreet 
+    (blur)="onBlurStreet()" 
+    (keyup)="onKeyUp($event.keyCode, fieldStreet)" 
+    [attr.placeholder]="placeholderStreet"
+    autocomplete="dummy" 
+    class="form-control" />
 
 <div *ngIf="suggestions && suggestions.length" class="autocomplete-container">
-    <div *ngFor="#suggestion of suggestions">
-        <div [class.selected]="suggestion === selectedSuggestion" (mouseover)="selectedSuggestion = suggestion" (click)="selectedSuggestion = suggestion">
-            {{suggestion}}
+    <div *ngFor="let suggestion of suggestions">
+        <div [class.selected]="suggestion === selectedSuggestion" 
+            (mouseover)="selectedSuggestion = suggestion" 
+            (click)="selectedSuggestion = suggestion">
+                {{suggestion}}
         </div>
     </div>
 </div>
 
-<input #fieldHouseNumber focusOnInit *ngIf="address" [class.hidden]="address.houseNumber && !manualHouseNumber" (keyup.enter)="fieldHouseNumber.blur()"
-    [ngModel]="manualHouseNumber" [attr.placeholder]="placeholderHouseNumber" (blur)="onBlurHouseNumber(fieldHouseNumber.value)"
-    [attr.placeholder]="placeholderHouseNumber" autocomplete="dummy" class="form-control" />
+<input #fieldHouseNumber 
+    focusOnInit 
+    *ngIf="address" 
+    [class.hidden]="address.houseNumber && !manualHouseNumber" 
+    (keyup.enter)="fieldHouseNumber.blur()"
+    [attr.placeholder]="placeholderHouseNumber" 
+    (blur)="onBlurHouseNumber(fieldHouseNumber.value)"
+    [attr.placeholder]="placeholderHouseNumber" 
+    autocomplete="dummy" 
+    class="form-control" />
 
-<input #fieldPostalCode focusOnInit *ngIf="address && manualHouseNumber" [ngModel]="manualPostalCode" [attr.placeholder]="placeholderPostalCode"
-    (keyup.enter)="fieldPostalCode.blur()" (blur)="onBlurPostalCode(fieldPostalCode.value)" [attr.placeholder]="placeholderPostalCode"
-    autocomplete="dummy" class="form-control" />
+<input #fieldPostalCode 
+    focusOnInit 
+    *ngIf="address && manualHouseNumber"  
+    [attr.placeholder]="placeholderPostalCode"
+    (keyup.enter)="fieldPostalCode.blur()" 
+    (blur)="onBlurPostalCode(fieldPostalCode.value)" 
+    [attr.placeholder]="placeholderPostalCode"
+    autocomplete="dummy" 
+    class="form-control" />
