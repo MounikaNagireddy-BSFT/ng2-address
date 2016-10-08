@@ -1,11 +1,11 @@
 import {
-    Component,
-    EventEmitter,
-    Input,
-    OnChanges,
-    OnInit,
-    Output,
-    SimpleChange
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChange
 } from '@angular/core';
 
 import {GooglePlacesAutocompleteService} from './google-places-autocomplete.service';
@@ -23,62 +23,21 @@ const KEYS = {
 
 @Component({
   selector: 'address-autocomplete',
-  template: `<input #fieldStreet
-      (blur)="onBlurStreet()"
-      (keyup)="onKeyUp($event.keyCode, fieldStreet)"
-      [attr.placeholder]="placeholderStreet"
-      [ngModel]="inputString"
-      autocomplete="dummy"
-      class="form-control" />
-
-    <div *ngIf="suggestions && suggestions.length" class="autocomplete-container">
-      <div *ngFor="#suggestion of suggestions">
-        <div
-          [class.selected]="suggestion === selectedSuggestion"
-          (mouseover)="selectedSuggestion = suggestion"
-          (click)="selectedSuggestion = suggestion"
-          >
-          {{suggestion}}
-        </div>
-      </div>
-    </div>
-
-    <input #fieldHouseNumber
-      focusOnInit
-      *ngIf="address"
-      [class.hidden]="address.houseNumber && !manualHouseNumber"
-      (keyup.enter)="fieldHouseNumber.blur()"
-      [ngModel]="manualHouseNumber"
-      [attr.placeholder]="placeholderHouseNumber"
-      (blur)="onBlurHouseNumber(fieldHouseNumber.value)"
-      [attr.placeholder]="placeholderHouseNumber"
-      autocomplete="dummy"
-      class="form-control" />
-
-    <input #fieldPostalCode
-      focusOnInit
-      *ngIf="address && manualHouseNumber"
-      [ngModel]="manualPostalCode"
-      [attr.placeholder]="placeholderPostalCode"
-      (keyup.enter)="fieldPostalCode.blur()"
-      (blur)="onBlurPostalCode(fieldPostalCode.value)"
-      [attr.placeholder]="placeholderPostalCode"
-      autocomplete="dummy"
-      class="form-control" />`,
+  templateUrl: 'address-autocomplete.entryComponents.html',
   styles: [`
       .selected {
         background-color: hsla(200, 100%, 50%, 0.2);
       }
-    `],
+  `],
   providers: [GooglePlacesAutocompleteService]
 })
 export class AddressAutocompleteComponent implements OnInit, OnChanges {
-  @Output() public onAddress = new EventEmitter<Address>();
+  @Output()public onAddress = new EventEmitter < Address > ();
 
-  @Input() public placeholderStreet: string;
-  @Input() public placeholderHouseNumber: string;
-  @Input() public placeholderPostalCode: string;
-  @Input() public country: string;
+  @Input()public placeholderStreet: string;
+  @Input()public placeholderHouseNumber: string;
+  @Input()public placeholderPostalCode: string;
+  @Input()public country: string;
 
   public address: Address;
 
@@ -90,10 +49,7 @@ export class AddressAutocompleteComponent implements OnInit, OnChanges {
   private manualHouseNumber: string;
   private manualPostalCode: string;
 
-  constructor(
-    autoCompleteService: GooglePlacesAutocompleteService,
-    focusDirective: FocusDirective
-    ) {
+  constructor(autoCompleteService: GooglePlacesAutocompleteService, focusDirective: FocusDirective) {
     this.autoCompleteService = autoCompleteService;
     this.suggestions = [];
   }
@@ -102,7 +58,10 @@ export class AddressAutocompleteComponent implements OnInit, OnChanges {
     this.autoCompleteService.country = this.country;
   }
 
-  ngOnChanges(changes: { country: SimpleChange, address: SimpleChange }) {
+  ngOnChanges(changes: {
+    country: SimpleChange,
+    address: SimpleChange
+  }) {
     if (changes.country) {
       this.autoCompleteService.country = changes.country.currentValue;
       this.inputString = null;
@@ -130,25 +89,31 @@ export class AddressAutocompleteComponent implements OnInit, OnChanges {
 
   private onChangeInput(str: string, inputField: HTMLInputElement) {
 
-    // User cleared the input field, or this is the first key pressed (which isnt a character).
+    // User cleared the input field, or this is the first key pressed (which isnt a
+    // character).
     if (!str) {
       this.selectedSuggestion = null;
       this.suggestions = [];
       return;
     }
 
-    this.autoCompleteService.getSuggestions(str).then(results => {
-      this.suggestions = results;
-      this.selectedSuggestion = results[0];
+    this
+      .autoCompleteService
+      .getSuggestions(str)
+      .then(results => {
+        this.suggestions = results;
+        this.selectedSuggestion = results[0];
 
-      // On mobile, scroll input element to the top, so the suggestions are more visible.
-      if ('ontouchstart' in window) {
-        this.scrollToElement(inputField);
-      }
-    }).catch((status) => {
-      this.suggestions = [];
-      this.selectedSuggestion = null;
-    });
+        // On mobile, scroll input element to the top, so the suggestions are more
+        // visible.
+        if ('ontouchstart' in window) {
+          this.scrollToElement(inputField);
+        }
+      })
+      .catch((status) => {
+        this.suggestions = [];
+        this.selectedSuggestion = null;
+      });
   }
 
   // Scroll element to top on touchscreens, to make place for suggestion list.
@@ -167,7 +132,9 @@ export class AddressAutocompleteComponent implements OnInit, OnChanges {
    * Use arrow keys to select previous or next suggestion
    */
   private updateSuggestionSelection(keyCode) {
-    let selectedIndex = this.suggestions.indexOf(this.selectedSuggestion);
+    let selectedIndex = this
+      .suggestions
+      .indexOf(this.selectedSuggestion);
 
     if (keyCode === KEYS.ARROW_DOWN) {
       selectedIndex++;
@@ -199,44 +166,59 @@ export class AddressAutocompleteComponent implements OnInit, OnChanges {
     // Get the address details (components) based on the google placeid
     let placeId = suggestion.id;
 
-    return this.autoCompleteService.getSuggestionDetails(placeId).then(placeDetail => {
-      let address: Address = placeDetail.address;
+    return this
+      .autoCompleteService
+      .getSuggestionDetails(placeId)
+      .then(placeDetail => {
+        let address: Address = placeDetail.address;
 
-      if (this.address && (address.toString() !== this.address.toString())) {
-        // remove manual housenumber, postalcode override
-        this.manualHouseNumber = '';
-        this.manualPostalCode = '';
-      }
+        if (this.address && (address.toString() !== this.address.toString())) {
+          // remove manual housenumber, postalcode override
+          this.manualHouseNumber = '';
+          this.manualPostalCode = '';
+        }
 
-      this.address = address;
-      this.onAddress.emit(address);
-    });
+        this.address = address;
+        this
+          .onAddress
+          .emit(address);
+      });
   }
 
   private onBlurHouseNumber(houseNumber: string) {
 
-    this.autoCompleteService.getSuggestions(`${houseNumber} ${this.inputString}`).then((results: PlaceSuggestion[]) => {
-      let bestSuggestion = results[0];
+    this
+      .autoCompleteService
+      .getSuggestions(`${houseNumber} ${this.inputString}`)
+      .then((results: PlaceSuggestion[]) => {
+        let bestSuggestion = results[0];
 
-      this.autoCompleteService.getSuggestionDetails(bestSuggestion.id).then((placeDetail: PlaceDetails) => {
-        // The new suggestion is based on street + housenumber.
-        // In 99% of the cases this means the autocomplete engine found an postalcode as well.
-        if (placeDetail.address.isComplete()) {
-          this.useSuggestion(bestSuggestion);
-        } else {
-          this.manualHouseNumber = houseNumber;
-          this.address.houseNumber = houseNumber;
-          this.onAddress.emit(this.address);
-        }
+        this
+          .autoCompleteService
+          .getSuggestionDetails(bestSuggestion.id)
+          .then((placeDetail: PlaceDetails) => {
+            // The new suggestion is based on street + housenumber. In 99% of the cases this
+            // means the autocomplete engine found an postalcode as well.
+            if (placeDetail.address.isComplete()) {
+              this.useSuggestion(bestSuggestion);
+            } else {
+              this.manualHouseNumber = houseNumber;
+              this.address.houseNumber = houseNumber;
+              this
+                .onAddress
+                .emit(this.address);
+            }
+          });
       });
-    });
   }
 
   private onBlurPostalCode(postalCode: string) {
     if (postalCode) {
       this.manualPostalCode = postalCode;
       this.address.postalCode = postalCode;
-      this.onAddress.emit(this.address);
+      this
+        .onAddress
+        .emit(this.address);
     }
   }
 }
