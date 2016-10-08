@@ -1,7 +1,8 @@
-<input #fieldStreet 
+<input #fieldStreet
+    [(ngModel)]="inputString"
+    [attr.placeholder]="placeholderStreet"
     (blur)="onBlurStreet()" 
     (keyup)="onKeyUp($event.keyCode, fieldStreet)" 
-    [attr.placeholder]="placeholderStreet"
     autocomplete="dummy" 
     class="form-control" />
 

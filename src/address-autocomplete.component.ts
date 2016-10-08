@@ -44,7 +44,7 @@ export class AddressAutocompleteComponent implements OnInit, OnChanges {
   private autoCompleteService: IAutocompleteService;
 
   private selectedSuggestion: PlaceSuggestion;
-  suggestions: PlaceSuggestion[];
+  private suggestions: PlaceSuggestion[];
   private inputString: string;
   private manualHouseNumber: string;
   private manualPostalCode: string;
@@ -55,7 +55,7 @@ export class AddressAutocompleteComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.autoCompleteService.country = this.country;
+    this.autoCompleteService.country = 'DE'; // this.country;
   }
 
   ngOnChanges(changes: {
@@ -132,9 +132,7 @@ export class AddressAutocompleteComponent implements OnInit, OnChanges {
    * Use arrow keys to select previous or next suggestion
    */
   private updateSuggestionSelection(keyCode) {
-    let selectedIndex = this
-      .suggestions
-      .indexOf(this.selectedSuggestion);
+    let selectedIndex = this.suggestions.indexOf(this.selectedSuggestion);
 
     if (keyCode === KEYS.ARROW_DOWN) {
       selectedIndex++;
@@ -150,7 +148,6 @@ export class AddressAutocompleteComponent implements OnInit, OnChanges {
 
   private onBlurStreet() {
     if (this.selectedSuggestion) {
-
       this.useSuggestion(this.selectedSuggestion);
     }
   }
