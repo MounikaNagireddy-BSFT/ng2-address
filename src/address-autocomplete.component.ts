@@ -1,7 +1,11 @@
 import {
-Component, Inject, Input,
-Output, EventEmitter, ElementRef,
-SimpleChange
+    Component,
+    EventEmitter,
+    Input,
+    OnChanges,
+    OnInit,
+    Output,
+    SimpleChange
 } from '@angular/core';
 
 import {GooglePlacesAutocompleteService} from './google-places-autocomplete.service';
@@ -68,7 +72,7 @@ const KEYS = {
     `],
   providers: [GooglePlacesAutocompleteService]
 })
-export class AddressAutocompleteComponent {
+export class AddressAutocompleteComponent implements OnInit, OnChanges {
   @Output() public onAddress = new EventEmitter<Address>();
 
   @Input() public placeholderStreet: string;
@@ -94,11 +98,11 @@ export class AddressAutocompleteComponent {
     this.suggestions = [];
   }
 
-  private ngOnInit() {
+  ngOnInit() {
     this.autoCompleteService.country = this.country;
   }
 
-  private ngOnChanges(changes: { country: SimpleChange, address: SimpleChange }) {
+  ngOnChanges(changes: { country: SimpleChange, address: SimpleChange }) {
     if (changes.country) {
       this.autoCompleteService.country = changes.country.currentValue;
       this.inputString = null;
@@ -106,7 +110,7 @@ export class AddressAutocompleteComponent {
     }
   }
 
-  private onKeyUp(keyCode: number, fieldStreet: HTMLInputElement) {
+  onKeyUp(keyCode: number, fieldStreet: HTMLInputElement) {
     if (keyCode === KEYS.ENTER) {
       fieldStreet.blur();
       return;
