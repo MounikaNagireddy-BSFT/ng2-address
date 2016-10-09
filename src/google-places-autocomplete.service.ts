@@ -1,3 +1,4 @@
+/// <reference path="../typings/globals/google.maps/index.d.ts" />
 import { Injectable } from '@angular/core';
 import { PlaceSuggestion, PlaceType } from './place-suggestion';
 import { PlaceDetails } from './place-details';
