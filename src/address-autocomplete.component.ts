@@ -1,5 +1,3 @@
-/// <reference path="../typings/globals/google.maps/index.d.ts" />
-
 import {
   Component,
   EventEmitter,

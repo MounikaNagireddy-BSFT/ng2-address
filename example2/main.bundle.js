@@ -85,6 +85,7 @@ webpackJsonp([0,1],[
 /* harmony namespace reexport (by used) */ __webpack_require__.d(exports, "_26", function() { return __WEBPACK_IMPORTED_MODULE_0__src_core__["_26"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(exports, "_27", function() { return __WEBPACK_IMPORTED_MODULE_0__src_core__["_27"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(exports, "_28", function() { return __WEBPACK_IMPORTED_MODULE_0__src_core__["_28"]; });
+/* harmony namespace reexport (by used) */ __webpack_require__.d(exports, "_29", function() { return __WEBPACK_IMPORTED_MODULE_0__src_core__["_29"]; });
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -4994,7 +4995,7 @@ var NG_VALUE_ACCESSOR = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["v" /* O
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operator_toPromise__ = __webpack_require__(570);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operator_toPromise__ = __webpack_require__(571);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_rxjs_operator_toPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_rxjs_operator_toPromise__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__facade_collection__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__facade_lang__ = __webpack_require__(21);
@@ -14160,7 +14161,7 @@ var SELECT_DIRECTIVES = [SelectMultipleControlValueAccessor, NgSelectMultipleOpt
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_observable_fromPromise__ = __webpack_require__(569);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_observable_fromPromise__ = __webpack_require__(570);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_observable_fromPromise___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_rxjs_observable_fromPromise__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__directives_shared__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__facade_async__ = __webpack_require__(60);
@@ -15703,8 +15704,8 @@ __webpack_require__(179)(String, 'String', function(iterated){
 "use strict";
 "use strict";
 var root_1 = __webpack_require__(82);
-var toSubscriber_1 = __webpack_require__(576);
-var observable_1 = __webpack_require__(571);
+var toSubscriber_1 = __webpack_require__(577);
+var observable_1 = __webpack_require__(572);
 /**
  * A representation of any set of values over any amount of time. This the most basic building block
  * of RxJS.
@@ -15856,8 +15857,8 @@ var __extends = (this && this.__extends) || function (d, b) {
 var Observable_1 = __webpack_require__(118);
 var Subscriber_1 = __webpack_require__(307);
 var Subscription_1 = __webpack_require__(189);
-var ObjectUnsubscribedError_1 = __webpack_require__(572);
-var SubjectSubscription_1 = __webpack_require__(567);
+var ObjectUnsubscribedError_1 = __webpack_require__(573);
+var SubjectSubscription_1 = __webpack_require__(568);
 var rxSubscriber_1 = __webpack_require__(190);
 /**
  * @class SubjectSubscriber<T>
@@ -20222,7 +20223,7 @@ var ApplicationInitStatus = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__profile_profile__ = __webpack_require__(100);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__testability_testability__ = __webpack_require__(153);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__zone_ng_zone__ = __webpack_require__(156);
-/* unused harmony export enableProdMode */
+/* harmony export (immutable) */ exports["g"] = enableProdMode;
 /* harmony export (immutable) */ exports["f"] = isDevMode;
 /* unused harmony export createPlatform */
 /* harmony export (immutable) */ exports["c"] = createPlatformFactory;
@@ -25300,12 +25301,12 @@ module.exports = '\x09\x0A\x0B\x0C\x0D\x20\xA0\u1680\u180E\u2000\u2001\u2002\u20
 
 "use strict";
 "use strict";
-var isArray_1 = __webpack_require__(574);
-var isObject_1 = __webpack_require__(575);
+var isArray_1 = __webpack_require__(575);
+var isObject_1 = __webpack_require__(576);
 var isFunction_1 = __webpack_require__(309);
-var tryCatch_1 = __webpack_require__(577);
+var tryCatch_1 = __webpack_require__(578);
 var errorObject_1 = __webpack_require__(308);
-var UnsubscriptionError_1 = __webpack_require__(573);
+var UnsubscriptionError_1 = __webpack_require__(574);
 /**
  * Represents a disposable resource, such as the execution of an Observable. A
  * Subscription has one important method, `unsubscribe`, that takes no argument
@@ -37656,110 +37657,24 @@ var SafeResourceUrlImpl = (function (_super) {
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__place_suggestion__ = __webpack_require__(412);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__place_details__ = __webpack_require__(411);
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return GooglePlacesAutocompleteService; });
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-// Service that wraps the google autocomplete service.
-// https://developers.google.com/maps/documentation/javascript/reference#AutocompleteService
-var GooglePlacesAutocompleteService = (function () {
-    function GooglePlacesAutocompleteService() {
-        // The google PlacesService somehow needs an HTMLDivElement as an argument. Create a dummy div.
-        this._googlePlacesService = new google.maps.places.PlacesService(document.createElement('div'));
-        this._googleAutocomplete = new google.maps.places.AutocompleteService();
-        this.country = 'NL'; // Default.
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return Address; });
+var Address = (function () {
+    function Address() {
     }
-    GooglePlacesAutocompleteService.prototype.getSuggestions = function (str) {
+    Address.prototype.toString = function () {
         var _this = this;
-        var request = {
-            input: str,
-            componentRestrictions: {
-                country: this.country
-            },
-            types: ['address']
-        };
-        return new Promise(function (resolve, reject) {
-            _this._googleAutocomplete.getPlacePredictions(request, function (results, status) {
-                if (status === google.maps.places.PlacesServiceStatus.OK) {
-                    var suggestions = results.map(function (r) { return _this.parseGooglePrediction(r); });
-                    resolve(suggestions);
-                }
-                else {
-                    reject(status);
-                }
-            });
-        });
+        // Get all *filled* fields from this object and concatenate them.
+        return ['street', 'houseNumber', 'city', 'country']
+            .map(function (k) { return _this[k]; }) // Get all values for given keys
+            .filter(function (v) { return !!v; }) // Check if the value is truthy (not null/undefined/empty string)
+            .join(' ');
     };
-    /**
-     * Get place details based on google place_id.
-     */
-    GooglePlacesAutocompleteService.prototype.getSuggestionDetails = function (id) {
+    Address.prototype.isComplete = function () {
         var _this = this;
-        return new Promise(function (resolve, reject) {
-            return _this._googlePlacesService.getDetails({
-                placeId: id
-            }, function (placeResult, status) {
-                if (status === google.maps.places.PlacesServiceStatus.OK) {
-                    var address = _this.parseGooglePlaceResult(placeResult);
-                    resolve(address);
-                }
-                else {
-                    reject(status);
-                }
-            });
-        });
+        return ['street', 'houseNumber', 'city', 'postalCode', 'country']
+            .every(function (k) { return !!_this[k]; });
     };
-    /**
-     * Map google result to PlaceSuggestion object
-     */
-    GooglePlacesAutocompleteService.prototype.parseGooglePrediction = function (googleResult) {
-        var suggestion = new __WEBPACK_IMPORTED_MODULE_1__place_suggestion__["a" /* PlaceSuggestion */]();
-        suggestion.description = googleResult.description;
-        suggestion.id = googleResult.place_id;
-        suggestion.type = __WEBPACK_IMPORTED_MODULE_1__place_suggestion__["b" /* PlaceType */][googleResult.types[0]];
-        return suggestion;
-    };
-    /**
-     * Map google result to PlaceDetail object
-     */
-    GooglePlacesAutocompleteService.prototype.parseGooglePlaceResult = function (placeResult) {
-        // For convenience first create a map of the google address components. ie: { 'locality' : 'Utrecht', ... }
-        var map = placeResult.address_components.reduce(function (map, addrComponent) {
-            map[addrComponent.types[0]] = addrComponent.long_name;
-            return map;
-        }, {});
-        var placeDetail = new __WEBPACK_IMPORTED_MODULE_2__place_details__["a" /* PlaceDetails */](placeResult.place_id);
-        // Copy fields to the address object.
-        Object.assign(placeDetail.address, {
-            street: map.route,
-            houseNumber: map.street_number,
-            postalCode: map.postal_code,
-            city: map.locality,
-            country: map.country,
-            coords: {
-                lat: placeResult.geometry.location.lat(),
-                lng: placeResult.geometry.location.lng()
-            }
-        });
-        return placeDetail;
-    };
-    GooglePlacesAutocompleteService = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Injectable */])(), 
-        __metadata('design:paramtypes', [])
-    ], GooglePlacesAutocompleteService);
-    return GooglePlacesAutocompleteService;
+    return Address;
 }());
 
 
@@ -38865,7 +38780,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var isFunction_1 = __webpack_require__(309);
 var Subscription_1 = __webpack_require__(189);
-var Observer_1 = __webpack_require__(566);
+var Observer_1 = __webpack_require__(567);
 var rxSubscriber_1 = __webpack_require__(190);
 /**
  * Implements the {@link Observer} interface and extends the
@@ -39147,15 +39062,17 @@ webpackEmptyContext.id = 310;
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfills_ts__ = __webpack_require__(413);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__polyfills_ts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__polyfills_ts__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__ = __webpack_require__(389);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ng2_address__ = __webpack_require__(410);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(389);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__polyfills_ts__ = __webpack_require__(413);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__polyfills_ts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__polyfills_ts__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__example_module__ = __webpack_require__(409);
 
 
 
-// enableProdMode();
-__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_2__ng2_address__["a" /* AppModule */]);
+
+__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["_29" /* enableProdMode */])();
+__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_3__example_module__["a" /* Example */]);
 
 
 /***/ },
@@ -45359,7 +45276,7 @@ var ChangeDetectorRef = (function () {
 /* unused harmony reexport getPlatform */
 /* unused harmony reexport createPlatform */
 /* harmony reexport (binding) */ __webpack_require__.d(exports, "_21", function() { return __WEBPACK_IMPORTED_MODULE_3__application_ref__["e"]; });
-/* unused harmony reexport enableProdMode */
+/* harmony reexport (binding) */ __webpack_require__.d(exports, "_29", function() { return __WEBPACK_IMPORTED_MODULE_3__application_ref__["g"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(exports, "c", function() { return __WEBPACK_IMPORTED_MODULE_3__application_ref__["f"]; });
 /* harmony reexport (binding) */ __webpack_require__.d(exports, "_10", function() { return __WEBPACK_IMPORTED_MODULE_3__application_ref__["c"]; });
 /* unused harmony reexport PlatformRef */
@@ -49575,8 +49492,10 @@ function sanitizeStyle(value) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__google_places_autocomplete_service__ = __webpack_require__(269);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__google_places_autocomplete_service__ = __webpack_require__(410);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__address__ = __webpack_require__(269);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return AddressAutocompleteComponent; });
+/// <reference path="../typings/globals/google.maps/index.d.ts" />
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -49586,6 +49505,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+
 
 
 var KEYS = {
@@ -49600,7 +49520,7 @@ var AddressAutocompleteComponent = (function () {
         this.suggestions = [];
     }
     AddressAutocompleteComponent.prototype.ngOnInit = function () {
-        this.autoCompleteService.country = 'DE'; // this.country;
+        this.autoCompleteService.country = this.country;
     };
     AddressAutocompleteComponent.prototype.ngOnChanges = function (changes) {
         if (changes['country']) {
@@ -49758,6 +49678,10 @@ var AddressAutocompleteComponent = (function () {
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Input */])(), 
         __metadata('design:type', String)
     ], AddressAutocompleteComponent.prototype, "country", void 0);
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Input */])(), 
+        __metadata('design:type', (typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__address__["a" /* Address */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__address__["a" /* Address */]) === 'function' && _a) || Object)
+    ], AddressAutocompleteComponent.prototype, "address", void 0);
     AddressAutocompleteComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Component */])({
             selector: 'ng2-address-autocomplete',
@@ -49765,10 +49689,10 @@ var AddressAutocompleteComponent = (function () {
             styles: ["\n      .selected {\n        background-color: hsla(200, 100%, 50%, 0.2);\n      }\n  "],
             providers: [__WEBPACK_IMPORTED_MODULE_1__google_places_autocomplete_service__["a" /* GooglePlacesAutocompleteService */]]
         }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__google_places_autocomplete_service__["a" /* GooglePlacesAutocompleteService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__google_places_autocomplete_service__["a" /* GooglePlacesAutocompleteService */]) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [(typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__google_places_autocomplete_service__["a" /* GooglePlacesAutocompleteService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__google_places_autocomplete_service__["a" /* GooglePlacesAutocompleteService */]) === 'function' && _b) || Object])
     ], AddressAutocompleteComponent);
     return AddressAutocompleteComponent;
-    var _a;
+    var _a, _b;
 }());
 
 
@@ -49777,24 +49701,37 @@ var AddressAutocompleteComponent = (function () {
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return Address; });
-var Address = (function () {
-    function Address() {
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return ExampleComponent; });
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var ExampleComponent = (function () {
+    function ExampleComponent() {
+        this.country = 'DE';
     }
-    Address.prototype.toString = function () {
-        var _this = this;
-        // Get all *filled* fields from this object and concatenate them.
-        return ['street', 'houseNumber', 'city', 'country']
-            .map(function (k) { return _this[k]; }) // Get all values for given keys
-            .filter(function (v) { return !!v; }) // Check if the value is truthy (not null/undefined/empty string)
-            .join(' ');
+    ExampleComponent.prototype.addressChanged = function (address) {
+        console.log('Addess: ' + address);
     };
-    Address.prototype.isComplete = function () {
-        var _this = this;
-        return ['street', 'houseNumber', 'city', 'postalCode', 'country']
-            .every(function (k) { return !!_this[k]; });
-    };
-    return Address;
+    __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Input */])(), 
+        __metadata('design:type', String)
+    ], ExampleComponent.prototype, "country", void 0);
+    ExampleComponent = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Component */])({
+            selector: 'example',
+            template: __webpack_require__(565),
+            styles: ["\n    .autocomplete-container {\n          position: absolute;\n          width: 100%;\n          background-color: #fff;\n          padding: 4px;\n          z-index: 2;\n        }\n        .autocomplete-container > div > div {\n          padding: 8px 0;\n          cursor: pointer;\n        }"] }), 
+        __metadata('design:paramtypes', [])
+    ], ExampleComponent);
+    return ExampleComponent;
 }());
 
 
@@ -49804,7 +49741,11 @@ var Address = (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return FocusDirective; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(384);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__(258);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__address_autocomplete_component__ = __webpack_require__(407);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__example_component__ = __webpack_require__(408);
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return Example; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -49815,20 +49756,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-// http://stackoverflow.com/questions/34502768/why-angular2-template-local-variables-are-not-usable-in-templates-when-using-ng
-var FocusDirective = (function () {
-    function FocusDirective(el, renderer) {
-        this.el = el;
+
+
+
+
+var Example = (function () {
+    function Example() {
     }
-    FocusDirective.prototype.ngAfterViewInit = function () {
-        this.el.nativeElement.focus();
-    };
-    FocusDirective = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["G" /* Directive */])({ selector: '[focusOnInit]' }), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["g" /* ElementRef */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_0__angular_core__["g" /* ElementRef */]) === 'function' && _a) || Object, (typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* Renderer */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_0__angular_core__["q" /* Renderer */]) === 'function' && _b) || Object])
-    ], FocusDirective);
-    return FocusDirective;
-    var _a, _b;
+    Example = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* NgModule */])({
+            imports: [__WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["b" /* BrowserModule */], __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormsModule */]],
+            declarations: [__WEBPACK_IMPORTED_MODULE_4__example_component__["a" /* ExampleComponent */], __WEBPACK_IMPORTED_MODULE_3__address_autocomplete_component__["a" /* AddressAutocompleteComponent */]],
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_4__example_component__["a" /* ExampleComponent */]],
+            providers: []
+        }), 
+        __metadata('design:paramtypes', [])
+    ], Example);
+    return Example;
 }());
 
 
@@ -49838,12 +49782,9 @@ var FocusDirective = (function () {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(384);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__(258);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__address_autocomplete_component__ = __webpack_require__(407);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__google_places_autocomplete_service__ = __webpack_require__(269);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__focus_directive__ = __webpack_require__(409);
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return AppModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__place_suggestion__ = __webpack_require__(412);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__place_details__ = __webpack_require__(411);
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return GooglePlacesAutocompleteService; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -49856,22 +49797,94 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-
-
-
-var AppModule = (function () {
-    function AppModule() {
+// Service that wraps the google autocomplete service.
+// https://developers.google.com/maps/documentation/javascript/reference#AutocompleteService
+var GooglePlacesAutocompleteService = (function () {
+    function GooglePlacesAutocompleteService() {
+        // The google PlacesService somehow needs an HTMLDivElement as an argument. Create a dummy div.
+        this._googlePlacesService = new google.maps.places.PlacesService(document.createElement('div'));
+        this._googleAutocomplete = new google.maps.places.AutocompleteService();
+        this.country = 'NL'; // Default.
     }
-    AppModule = __decorate([
-        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* NgModule */])({
-            imports: [__WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["b" /* BrowserModule */], __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormsModule */]],
-            declarations: [__WEBPACK_IMPORTED_MODULE_3__address_autocomplete_component__["a" /* AddressAutocompleteComponent */], __WEBPACK_IMPORTED_MODULE_5__focus_directive__["a" /* FocusDirective */]],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_3__address_autocomplete_component__["a" /* AddressAutocompleteComponent */]],
-            providers: [__WEBPACK_IMPORTED_MODULE_4__google_places_autocomplete_service__["a" /* GooglePlacesAutocompleteService */]]
-        }), 
+    GooglePlacesAutocompleteService.prototype.getSuggestions = function (str) {
+        var _this = this;
+        var request = {
+            input: str,
+            componentRestrictions: {
+                country: this.country
+            },
+            types: ['address']
+        };
+        return new Promise(function (resolve, reject) {
+            _this._googleAutocomplete.getPlacePredictions(request, function (results, status) {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    var suggestions = results.map(function (r) { return _this.parseGooglePrediction(r); });
+                    resolve(suggestions);
+                }
+                else {
+                    reject(status);
+                }
+            });
+        });
+    };
+    /**
+     * Get place details based on google place_id.
+     */
+    GooglePlacesAutocompleteService.prototype.getSuggestionDetails = function (id) {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            return _this._googlePlacesService.getDetails({
+                placeId: id
+            }, function (placeResult, status) {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    var address = _this.parseGooglePlaceResult(placeResult);
+                    resolve(address);
+                }
+                else {
+                    reject(status);
+                }
+            });
+        });
+    };
+    /**
+     * Map google result to PlaceSuggestion object
+     */
+    GooglePlacesAutocompleteService.prototype.parseGooglePrediction = function (googleResult) {
+        var suggestion = new __WEBPACK_IMPORTED_MODULE_1__place_suggestion__["a" /* PlaceSuggestion */]();
+        suggestion.description = googleResult.description;
+        suggestion.id = googleResult.place_id;
+        suggestion.type = __WEBPACK_IMPORTED_MODULE_1__place_suggestion__["b" /* PlaceType */][googleResult.types[0]];
+        return suggestion;
+    };
+    /**
+     * Map google result to PlaceDetail object
+     */
+    GooglePlacesAutocompleteService.prototype.parseGooglePlaceResult = function (placeResult) {
+        // For convenience first create a map of the google address components. ie: { 'locality' : 'Utrecht', ... }
+        var map = placeResult.address_components.reduce(function (map, addrComponent) {
+            map[addrComponent.types[0]] = addrComponent.long_name;
+            return map;
+        }, {});
+        var placeDetail = new __WEBPACK_IMPORTED_MODULE_2__place_details__["a" /* PlaceDetails */](placeResult.place_id);
+        // Copy fields to the address object.
+        Object.assign(placeDetail.address, {
+            street: map.route,
+            houseNumber: map.street_number,
+            postalCode: map.postal_code,
+            city: map.locality,
+            country: map.country,
+            coords: {
+                lat: placeResult.geometry.location.lat(),
+                lng: placeResult.geometry.location.lng()
+            }
+        });
+        return placeDetail;
+    };
+    GooglePlacesAutocompleteService = __decorate([
+        __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Injectable */])(), 
         __metadata('design:paramtypes', [])
-    ], AppModule);
-    return AppModule;
+    ], GooglePlacesAutocompleteService);
+    return GooglePlacesAutocompleteService;
 }());
 
 
@@ -49880,7 +49893,7 @@ var AppModule = (function () {
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__address__ = __webpack_require__(408);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__address__ = __webpack_require__(269);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return PlaceDetails; });
 
 var PlaceDetails = (function () {
@@ -49949,7 +49962,7 @@ var PlaceType;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_core_js_es6_reflect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13_core_js_es6_reflect__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_core_js_es7_reflect__ = __webpack_require__(428);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_core_js_es7_reflect___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14_core_js_es7_reflect__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_zone_js_dist_zone__ = __webpack_require__(578);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_zone_js_dist_zone__ = __webpack_require__(579);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15_zone_js_dist_zone___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15_zone_js_dist_zone__);
 
 
@@ -52789,6 +52802,12 @@ module.exports = "<input #fieldStreet\n    [(ngModel)]=\"inputString\"\n    [att
 /* 565 */
 /***/ function(module, exports) {
 
+module.exports = "  <div class=\"container\">\n  <div class=\"row\">\n    <div class=\"well col-md-6\">\n      <div class=\"page-header\">\n        <h1>ng2-address</h1>\n      </div>\n\n        <div class=\"form-group label-floating\">\n          <label class=\"control-label\">Country</label>\n          <select [ngModel]=\"country\" (ngModelChange)=\"country = $event\" class=\"form-control\">\n            <option value=\"DE\">Germany</option>\n            <option value=\"NL\">Netherlands</option>\n            <option value=\"SE\">Sweden</option>\n            <option value=\"DK\">Denmark</option>\n          </select>\n        </div>\n        <div class=\"form-group label-floating\">\n          <label class=\"control-label\">Address</label>\n          <ng2-address-autocomplete\n            [country]=\"country\"\n            [placeholderStreet]=\"'Streetname'\"\n            [placeholderHouseNumber]=\"'Housenumber'\"\n            [placeholderPostalCode]=\"'Postalcode'\"\n            [address]=\"address\"\n            (onAddress)=\"address = $event; addressChanged($event)\">\n          </ng2-address-autocomplete>\n        </div>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div *ngIf=\"address\" class=\"well col-md-6\">\n      <div class=\"row\">\n        <div class=\"col-sm-1\">\n          <h1><i class=\"material-icons\">place</i></h1>\n        </div>\n        <div class=\"col-sm-11\">\n          <h4>\n          {{address.street}} {{address.houseNumber}}<br>\n          {{address.postalCode}} {{address.city}}<br>\n          {{address.country}}\n        </h4>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
+
+/***/ },
+/* 566 */
+/***/ function(module, exports) {
+
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -52972,7 +52991,7 @@ process.umask = function() { return 0; };
 
 
 /***/ },
-/* 566 */
+/* 567 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -52986,7 +53005,7 @@ exports.empty = {
 //# sourceMappingURL=Observer.js.map
 
 /***/ },
-/* 567 */
+/* 568 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53032,7 +53051,7 @@ exports.SubjectSubscription = SubjectSubscription;
 //# sourceMappingURL=SubjectSubscription.js.map
 
 /***/ },
-/* 568 */
+/* 569 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53159,17 +53178,17 @@ function dispatchError(arg) {
 //# sourceMappingURL=PromiseObservable.js.map
 
 /***/ },
-/* 569 */
+/* 570 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
 "use strict";
-var PromiseObservable_1 = __webpack_require__(568);
+var PromiseObservable_1 = __webpack_require__(569);
 exports.fromPromise = PromiseObservable_1.PromiseObservable.create;
 //# sourceMappingURL=fromPromise.js.map
 
 /***/ },
-/* 570 */
+/* 571 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53203,7 +53222,7 @@ exports.toPromise = toPromise;
 //# sourceMappingURL=toPromise.js.map
 
 /***/ },
-/* 571 */
+/* 572 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53231,7 +53250,7 @@ exports.$$observable = getSymbolObservable(root_1.root);
 //# sourceMappingURL=observable.js.map
 
 /***/ },
-/* 572 */
+/* 573 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -53264,7 +53283,7 @@ exports.ObjectUnsubscribedError = ObjectUnsubscribedError;
 //# sourceMappingURL=ObjectUnsubscribedError.js.map
 
 /***/ },
-/* 573 */
+/* 574 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -53295,7 +53314,7 @@ exports.UnsubscriptionError = UnsubscriptionError;
 //# sourceMappingURL=UnsubscriptionError.js.map
 
 /***/ },
-/* 574 */
+/* 575 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -53304,7 +53323,7 @@ exports.isArray = Array.isArray || (function (x) { return x && typeof x.length =
 //# sourceMappingURL=isArray.js.map
 
 /***/ },
-/* 575 */
+/* 576 */
 /***/ function(module, exports) {
 
 "use strict";
@@ -53316,7 +53335,7 @@ exports.isObject = isObject;
 //# sourceMappingURL=isObject.js.map
 
 /***/ },
-/* 576 */
+/* 577 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53341,7 +53360,7 @@ exports.toSubscriber = toSubscriber;
 //# sourceMappingURL=toSubscriber.js.map
 
 /***/ },
-/* 577 */
+/* 578 */
 /***/ function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -53366,7 +53385,7 @@ exports.tryCatch = tryCatch;
 //# sourceMappingURL=tryCatch.js.map
 
 /***/ },
-/* 578 */
+/* 579 */
 /***/ function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {/**
@@ -54697,15 +54716,15 @@ if (_global['navigator'] && _global['navigator'].geolocation) {
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(50), __webpack_require__(565)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(50), __webpack_require__(566)))
 
 /***/ },
-/* 579 */
+/* 580 */
 /***/ function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(311);
 
 
 /***/ }
-],[579]);
+],[580]);
 //# sourceMappingURL=main.map

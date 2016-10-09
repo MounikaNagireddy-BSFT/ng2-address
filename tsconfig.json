@@ -10,7 +10,7 @@
   },
   "files": [
     "./typings/index.d.ts",
-    "./src/ng2-address.ts"
+    "./src/address-auto-completer.module.ts"
   ],
   "exclude": [
     "node_modules"

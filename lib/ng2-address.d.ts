@@ -107,7 +107,7 @@ declare module "focus-directive" {
         ngAfterViewInit(): void;
     }
 }
-declare module "ng2-address" {
+declare module "address-auto-completer.module" {
     export class AddressAutoCompleter {
     }
 }
