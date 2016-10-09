@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import {Address} from './address';
 
 @Component({
-  selector: 'example',
+  selector: 'address-autocompleter-example',
   templateUrl: 'example.component.html',
   styles: [`
     .autocomplete-container {

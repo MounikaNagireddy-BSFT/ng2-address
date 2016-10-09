@@ -21,8 +21,8 @@ const KEYS = {
 };
 
 @Component({
-  selector: 'ng2-address-autocomplete',
-  templateUrl: 'address-autocomplete.component.html',
+  selector: 'address-autocompleter',
+  templateUrl: 'address-autocompleter.component.html',
   styles: [`
       .selected {
         background-color: hsla(200, 100%, 50%, 0.2);
@@ -30,7 +30,7 @@ const KEYS = {
   `],
   providers: [GooglePlacesAutocompleteService]
 })
-export class AddressAutocompleteComponent implements OnInit, OnChanges {
+export class AddressAutocompleterComponent implements OnInit, OnChanges {
   @Output()public onAddress = new EventEmitter < Address > ();
 
   @Input()

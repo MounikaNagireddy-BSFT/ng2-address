@@ -3,7 +3,7 @@
     [attr.placeholder]="placeholderStreet"
     (blur)="onBlurStreet()" 
     (keyup)="onKeyUp($event.keyCode, fieldStreet)" 
-    autocomplete="dummy" 
+    autocomplete="off" 
     class="form-control" />
 
 <div *ngIf="suggestions && suggestions.length" class="autocomplete-container">
@@ -24,7 +24,7 @@
     [attr.placeholder]="placeholderHouseNumber" 
     (blur)="onBlurHouseNumber(fieldHouseNumber.value)"
     [attr.placeholder]="placeholderHouseNumber" 
-    autocomplete="dummy" 
+    autocomplete="off" 
     class="form-control" />
 
 <input #fieldPostalCode 
@@ -34,5 +34,5 @@
     (keyup.enter)="fieldPostalCode.blur()" 
     (blur)="onBlurPostalCode(fieldPostalCode.value)" 
     [attr.placeholder]="placeholderPostalCode"
-    autocomplete="dummy" 
+    autocomplete="off" 
     class="form-control" />

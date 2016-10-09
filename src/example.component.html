@@ -16,14 +16,14 @@
         </div>
         <div class="form-group label-floating">
           <label class="control-label">Address</label>
-          <ng2-address-autocomplete
+          <address-autocompleter
             [country]="country"
             [placeholderStreet]="'Streetname'"
             [placeholderHouseNumber]="'Housenumber'"
             [placeholderPostalCode]="'Postalcode'"
             [address]="address"
             (onAddress)="address = $event; addressChanged($event)">
-          </ng2-address-autocomplete>
+          </address-autocompleter>
         </div>
     </div>
   </div>

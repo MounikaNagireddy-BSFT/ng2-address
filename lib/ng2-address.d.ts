@@ -1,3 +1,4 @@
+/// <reference path="../typings/globals/google.maps/index.d.ts" />
 declare module "place-suggestion" {
     export class PlaceSuggestion {
         id: string;
@@ -66,11 +67,11 @@ declare module "google-places-autocomplete.service" {
         private parseGooglePlaceResult(placeResult);
     }
 }
-declare module "address-autocomplete.component" {
+declare module "address-autocompleter.component" {
     import { EventEmitter, OnChanges, OnInit, SimpleChanges } from '@angular/core';
     import { GooglePlacesAutocompleteService } from "google-places-autocomplete.service";
     import { Address } from "address";
-    export class AddressAutocompleteComponent implements OnInit, OnChanges {
+    export class AddressAutocompleterComponent implements OnInit, OnChanges {
         onAddress: EventEmitter<Address>;
         placeholderStreet: string;
         placeholderHouseNumber: string;

@@ -49494,8 +49494,7 @@ function sanitizeStyle(value) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__google_places_autocomplete_service__ = __webpack_require__(410);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__address__ = __webpack_require__(269);
-/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return AddressAutocompleteComponent; });
-/// <reference path="../typings/globals/google.maps/index.d.ts" />
+/* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return AddressAutocompleterComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -49513,23 +49512,23 @@ var KEYS = {
     ARROW_DOWN: 40,
     ENTER: 13
 };
-var AddressAutocompleteComponent = (function () {
-    function AddressAutocompleteComponent(autoCompleteService) {
+var AddressAutocompleterComponent = (function () {
+    function AddressAutocompleterComponent(autoCompleteService) {
         this.onAddress = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["_14" /* EventEmitter */]();
         this.autoCompleteService = autoCompleteService;
         this.suggestions = [];
     }
-    AddressAutocompleteComponent.prototype.ngOnInit = function () {
+    AddressAutocompleterComponent.prototype.ngOnInit = function () {
         this.autoCompleteService.country = this.country;
     };
-    AddressAutocompleteComponent.prototype.ngOnChanges = function (changes) {
+    AddressAutocompleterComponent.prototype.ngOnChanges = function (changes) {
         if (changes['country']) {
             this.autoCompleteService.country = changes['country'].currentValue;
             this.inputString = null;
             this.address = null;
         }
     };
-    AddressAutocompleteComponent.prototype.onKeyUp = function (keyCode, fieldStreet) {
+    AddressAutocompleterComponent.prototype.onKeyUp = function (keyCode, fieldStreet) {
         if (keyCode === KEYS.ENTER) {
             fieldStreet.blur();
             return;
@@ -49544,7 +49543,7 @@ var AddressAutocompleteComponent = (function () {
         }
         this.onChangeInput(fieldStreet.value, fieldStreet);
     };
-    AddressAutocompleteComponent.prototype.onChangeInput = function (str, inputField) {
+    AddressAutocompleterComponent.prototype.onChangeInput = function (str, inputField) {
         var _this = this;
         // User cleared the input field, or this is the first key pressed (which isnt a
         // character).
@@ -49571,7 +49570,7 @@ var AddressAutocompleteComponent = (function () {
         });
     };
     // Scroll element to top on touchscreens, to make place for suggestion list.
-    AddressAutocompleteComponent.prototype.scrollToElement = function (element) {
+    AddressAutocompleterComponent.prototype.scrollToElement = function (element) {
         var curtop = 0;
         while (element) {
             curtop += element.offsetTop;
@@ -49582,7 +49581,7 @@ var AddressAutocompleteComponent = (function () {
     /**
      * Use arrow keys to select previous or next suggestion
      */
-    AddressAutocompleteComponent.prototype.updateSuggestionSelection = function (keyCode) {
+    AddressAutocompleterComponent.prototype.updateSuggestionSelection = function (keyCode) {
         var selectedIndex = this.suggestions.indexOf(this.selectedSuggestion);
         if (keyCode === KEYS.ARROW_DOWN) {
             selectedIndex++;
@@ -49594,12 +49593,12 @@ var AddressAutocompleteComponent = (function () {
         selectedIndex = Math.min(this.suggestions.length - 1, Math.max(0, selectedIndex));
         this.selectedSuggestion = this.suggestions[selectedIndex];
     };
-    AddressAutocompleteComponent.prototype.onBlurStreet = function () {
+    AddressAutocompleterComponent.prototype.onBlurStreet = function () {
         if (this.selectedSuggestion) {
             this.useSuggestion(this.selectedSuggestion);
         }
     };
-    AddressAutocompleteComponent.prototype.useSuggestion = function (suggestion) {
+    AddressAutocompleterComponent.prototype.useSuggestion = function (suggestion) {
         var _this = this;
         // Replace input field with current selected suggestion.
         this.inputString = suggestion.description;
@@ -49623,7 +49622,7 @@ var AddressAutocompleteComponent = (function () {
                 .emit(address);
         });
     };
-    AddressAutocompleteComponent.prototype.onBlurHouseNumber = function (houseNumber) {
+    AddressAutocompleterComponent.prototype.onBlurHouseNumber = function (houseNumber) {
         var _this = this;
         this
             .autoCompleteService
@@ -49649,7 +49648,7 @@ var AddressAutocompleteComponent = (function () {
             });
         });
     };
-    AddressAutocompleteComponent.prototype.onBlurPostalCode = function (postalCode) {
+    AddressAutocompleterComponent.prototype.onBlurPostalCode = function (postalCode) {
         if (postalCode) {
             this.manualPostalCode = postalCode;
             this.address.postalCode = postalCode;
@@ -49661,37 +49660,37 @@ var AddressAutocompleteComponent = (function () {
     __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["B" /* Output */])(), 
         __metadata('design:type', Object)
-    ], AddressAutocompleteComponent.prototype, "onAddress", void 0);
+    ], AddressAutocompleterComponent.prototype, "onAddress", void 0);
     __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Input */])(), 
         __metadata('design:type', String)
-    ], AddressAutocompleteComponent.prototype, "placeholderStreet", void 0);
+    ], AddressAutocompleterComponent.prototype, "placeholderStreet", void 0);
     __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Input */])(), 
         __metadata('design:type', String)
-    ], AddressAutocompleteComponent.prototype, "placeholderHouseNumber", void 0);
+    ], AddressAutocompleterComponent.prototype, "placeholderHouseNumber", void 0);
     __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Input */])(), 
         __metadata('design:type', String)
-    ], AddressAutocompleteComponent.prototype, "placeholderPostalCode", void 0);
+    ], AddressAutocompleterComponent.prototype, "placeholderPostalCode", void 0);
     __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Input */])(), 
         __metadata('design:type', String)
-    ], AddressAutocompleteComponent.prototype, "country", void 0);
+    ], AddressAutocompleterComponent.prototype, "country", void 0);
     __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Input */])(), 
         __metadata('design:type', (typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__address__["a" /* Address */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_2__address__["a" /* Address */]) === 'function' && _a) || Object)
-    ], AddressAutocompleteComponent.prototype, "address", void 0);
-    AddressAutocompleteComponent = __decorate([
+    ], AddressAutocompleterComponent.prototype, "address", void 0);
+    AddressAutocompleterComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Component */])({
-            selector: 'ng2-address-autocomplete',
+            selector: 'address-autocompleter',
             template: __webpack_require__(564),
             styles: ["\n      .selected {\n        background-color: hsla(200, 100%, 50%, 0.2);\n      }\n  "],
             providers: [__WEBPACK_IMPORTED_MODULE_1__google_places_autocomplete_service__["a" /* GooglePlacesAutocompleteService */]]
         }), 
         __metadata('design:paramtypes', [(typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__google_places_autocomplete_service__["a" /* GooglePlacesAutocompleteService */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__google_places_autocomplete_service__["a" /* GooglePlacesAutocompleteService */]) === 'function' && _b) || Object])
-    ], AddressAutocompleteComponent);
-    return AddressAutocompleteComponent;
+    ], AddressAutocompleterComponent);
+    return AddressAutocompleterComponent;
     var _a, _b;
 }());
 
@@ -49726,7 +49725,7 @@ var ExampleComponent = (function () {
     ], ExampleComponent.prototype, "country", void 0);
     ExampleComponent = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["F" /* Component */])({
-            selector: 'example',
+            selector: 'address-autocompleter-example',
             template: __webpack_require__(565),
             styles: ["\n    .autocomplete-container {\n          position: absolute;\n          width: 100%;\n          background-color: #fff;\n          padding: 4px;\n          z-index: 2;\n        }\n        .autocomplete-container > div > div {\n          padding: 8px 0;\n          cursor: pointer;\n        }"] }), 
         __metadata('design:paramtypes', [])
@@ -49743,7 +49742,7 @@ var ExampleComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__(384);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__ = __webpack_require__(258);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__address_autocomplete_component__ = __webpack_require__(407);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__address_autocompleter_component__ = __webpack_require__(407);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__example_component__ = __webpack_require__(408);
 /* harmony export (binding) */ __webpack_require__.d(exports, "a", function() { return Example; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -49766,7 +49765,7 @@ var Example = (function () {
     Example = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["P" /* NgModule */])({
             imports: [__WEBPACK_IMPORTED_MODULE_2__angular_platform_browser__["b" /* BrowserModule */], __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* FormsModule */]],
-            declarations: [__WEBPACK_IMPORTED_MODULE_4__example_component__["a" /* ExampleComponent */], __WEBPACK_IMPORTED_MODULE_3__address_autocomplete_component__["a" /* AddressAutocompleteComponent */]],
+            declarations: [__WEBPACK_IMPORTED_MODULE_4__example_component__["a" /* ExampleComponent */], __WEBPACK_IMPORTED_MODULE_3__address_autocompleter_component__["a" /* AddressAutocompleterComponent */]],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_4__example_component__["a" /* ExampleComponent */]],
             providers: []
         }), 
@@ -52796,13 +52795,13 @@ metadata.exp({metadata: function metadata(metadataKey, metadataValue){
 /* 564 */
 /***/ function(module, exports) {
 
-module.exports = "<input #fieldStreet\n    [(ngModel)]=\"inputString\"\n    [attr.placeholder]=\"placeholderStreet\"\n    (blur)=\"onBlurStreet()\" \n    (keyup)=\"onKeyUp($event.keyCode, fieldStreet)\" \n    autocomplete=\"dummy\" \n    class=\"form-control\" />\n\n<div *ngIf=\"suggestions && suggestions.length\" class=\"autocomplete-container\">\n    <div *ngFor=\"let suggestion of suggestions\">\n        <div [class.selected]=\"suggestion === selectedSuggestion\" \n            (mouseover)=\"selectedSuggestion = suggestion\" \n            (click)=\"selectedSuggestion = suggestion\">\n                {{suggestion}}\n        </div>\n    </div>\n</div>\n\n<input #fieldHouseNumber \n    focusOnInit \n    *ngIf=\"address\" \n    [class.hidden]=\"address.houseNumber && !manualHouseNumber\" \n    (keyup.enter)=\"fieldHouseNumber.blur()\"\n    [attr.placeholder]=\"placeholderHouseNumber\" \n    (blur)=\"onBlurHouseNumber(fieldHouseNumber.value)\"\n    [attr.placeholder]=\"placeholderHouseNumber\" \n    autocomplete=\"dummy\" \n    class=\"form-control\" />\n\n<input #fieldPostalCode \n    focusOnInit \n    *ngIf=\"address && manualHouseNumber\"  \n    [attr.placeholder]=\"placeholderPostalCode\"\n    (keyup.enter)=\"fieldPostalCode.blur()\" \n    (blur)=\"onBlurPostalCode(fieldPostalCode.value)\" \n    [attr.placeholder]=\"placeholderPostalCode\"\n    autocomplete=\"dummy\" \n    class=\"form-control\" />";
+module.exports = "<input #fieldStreet\n    [(ngModel)]=\"inputString\"\n    [attr.placeholder]=\"placeholderStreet\"\n    (blur)=\"onBlurStreet()\" \n    (keyup)=\"onKeyUp($event.keyCode, fieldStreet)\" \n    autocomplete=\"off\" \n    class=\"form-control\" />\n\n<div *ngIf=\"suggestions && suggestions.length\" class=\"autocomplete-container\">\n    <div *ngFor=\"let suggestion of suggestions\">\n        <div [class.selected]=\"suggestion === selectedSuggestion\" \n            (mouseover)=\"selectedSuggestion = suggestion\" \n            (click)=\"selectedSuggestion = suggestion\">\n                {{suggestion}}\n        </div>\n    </div>\n</div>\n\n<input #fieldHouseNumber \n    focusOnInit \n    *ngIf=\"address\" \n    [class.hidden]=\"address.houseNumber && !manualHouseNumber\" \n    (keyup.enter)=\"fieldHouseNumber.blur()\"\n    [attr.placeholder]=\"placeholderHouseNumber\" \n    (blur)=\"onBlurHouseNumber(fieldHouseNumber.value)\"\n    [attr.placeholder]=\"placeholderHouseNumber\" \n    autocomplete=\"off\" \n    class=\"form-control\" />\n\n<input #fieldPostalCode \n    focusOnInit \n    *ngIf=\"address && manualHouseNumber\"  \n    [attr.placeholder]=\"placeholderPostalCode\"\n    (keyup.enter)=\"fieldPostalCode.blur()\" \n    (blur)=\"onBlurPostalCode(fieldPostalCode.value)\" \n    [attr.placeholder]=\"placeholderPostalCode\"\n    autocomplete=\"off\" \n    class=\"form-control\" />";
 
 /***/ },
 /* 565 */
 /***/ function(module, exports) {
 
-module.exports = "  <div class=\"container\">\n  <div class=\"row\">\n    <div class=\"well col-md-6\">\n      <div class=\"page-header\">\n        <h1>ng2-address</h1>\n      </div>\n\n        <div class=\"form-group label-floating\">\n          <label class=\"control-label\">Country</label>\n          <select [ngModel]=\"country\" (ngModelChange)=\"country = $event\" class=\"form-control\">\n            <option value=\"DE\">Germany</option>\n            <option value=\"NL\">Netherlands</option>\n            <option value=\"SE\">Sweden</option>\n            <option value=\"DK\">Denmark</option>\n          </select>\n        </div>\n        <div class=\"form-group label-floating\">\n          <label class=\"control-label\">Address</label>\n          <ng2-address-autocomplete\n            [country]=\"country\"\n            [placeholderStreet]=\"'Streetname'\"\n            [placeholderHouseNumber]=\"'Housenumber'\"\n            [placeholderPostalCode]=\"'Postalcode'\"\n            [address]=\"address\"\n            (onAddress)=\"address = $event; addressChanged($event)\">\n          </ng2-address-autocomplete>\n        </div>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div *ngIf=\"address\" class=\"well col-md-6\">\n      <div class=\"row\">\n        <div class=\"col-sm-1\">\n          <h1><i class=\"material-icons\">place</i></h1>\n        </div>\n        <div class=\"col-sm-11\">\n          <h4>\n          {{address.street}} {{address.houseNumber}}<br>\n          {{address.postalCode}} {{address.city}}<br>\n          {{address.country}}\n        </h4>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
+module.exports = "  <div class=\"container\">\n  <div class=\"row\">\n    <div class=\"well col-md-6\">\n      <div class=\"page-header\">\n        <h1>ng2-address</h1>\n      </div>\n\n        <div class=\"form-group label-floating\">\n          <label class=\"control-label\">Country</label>\n          <select [ngModel]=\"country\" (ngModelChange)=\"country = $event\" class=\"form-control\">\n            <option value=\"DE\">Germany</option>\n            <option value=\"NL\">Netherlands</option>\n            <option value=\"SE\">Sweden</option>\n            <option value=\"DK\">Denmark</option>\n          </select>\n        </div>\n        <div class=\"form-group label-floating\">\n          <label class=\"control-label\">Address</label>\n          <address-autocompleter\n            [country]=\"country\"\n            [placeholderStreet]=\"'Streetname'\"\n            [placeholderHouseNumber]=\"'Housenumber'\"\n            [placeholderPostalCode]=\"'Postalcode'\"\n            [address]=\"address\"\n            (onAddress)=\"address = $event; addressChanged($event)\">\n          </address-autocompleter>\n        </div>\n    </div>\n  </div>\n  <div class=\"row\">\n    <div *ngIf=\"address\" class=\"well col-md-6\">\n      <div class=\"row\">\n        <div class=\"col-sm-1\">\n          <h1><i class=\"material-icons\">place</i></h1>\n        </div>\n        <div class=\"col-sm-11\">\n          <h4>\n          {{address.street}} {{address.houseNumber}}<br>\n          {{address.postalCode}} {{address.city}}<br>\n          {{address.country}}\n        </h4>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>";
 
 /***/ },
 /* 566 */
