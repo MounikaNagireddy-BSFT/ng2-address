@@ -54,7 +54,7 @@ export class AddressAutocompleteComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.autoCompleteService.country = 'DE'; // this.country;
+    this.autoCompleteService.country = this.country;
   }
 
   ngOnChanges(changes: SimpleChanges) {

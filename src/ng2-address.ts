@@ -11,5 +11,5 @@ import {FocusDirective} from './focus-directive';
   bootstrap: [AddressAutocompleteComponent],
   providers: [GooglePlacesAutocompleteService]
 })
-export class AppModule {
+export class AddressAutoCompleter {
 }

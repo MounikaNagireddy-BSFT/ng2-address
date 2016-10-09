@@ -108,6 +108,6 @@ declare module "focus-directive" {
     }
 }
 declare module "ng2-address" {
-    export class AppModule {
+    export class AddressAutoCompleter {
     }
 }

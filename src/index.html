@@ -37,7 +37,7 @@
 
         <div class="form-group label-floating">
           <label class="control-label">Country</label>
-          <select [ngModel]="country" (ngModelChange)="country = $event; address = null;" class="form-control">
+          <select [(ngModel)]="country" (ngModelChange)="country = $event; address = null;" class="form-control">
             <option value="DE">Germany</option>
             <option value="NL">Netherlands</option>
             <option value="SE">Sweden</option>
