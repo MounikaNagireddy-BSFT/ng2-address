@@ -1,3 +1,5 @@
+/// <reference path="../typings/globals/google.maps/index.d.ts" />
+
 import {
   Component,
   EventEmitter,
@@ -33,11 +35,19 @@ const KEYS = {
 export class AddressAutocompleteComponent implements OnInit, OnChanges {
   @Output()public onAddress = new EventEmitter < Address > ();
 
-  @Input()public placeholderStreet: string;
-  @Input()public placeholderHouseNumber: string;
-  @Input()public placeholderPostalCode: string;
-  @Input()public country: string;
+  @Input()
+  public placeholderStreet: string;
 
+  @Input()
+  public placeholderHouseNumber: string;
+
+  @Input()
+  public placeholderPostalCode: string;
+
+  @Input()
+  public country: string;
+
+  @Input()
   public address: Address;
 
   private autoCompleteService: IAutocompleteService;

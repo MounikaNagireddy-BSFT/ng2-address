@@ -7,71 +7,16 @@
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA1QZr3G5qOLLnxPlAqZ-DtRfBRTzmhLwg&libraries=places"></script>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+  <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.css" type="text/css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.8/css/bootstrap-material-design.css" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.8/css/bootstrap-material-design.css"
+    type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/0.5.8/css/ripples.css" type="text/css">
-
-  <style>
-    .autocomplete-container {
-      position: absolute;
-      width: 100%;
-      background-color: #fff;
-      padding: 4px;
-      z-index: 2;
-    }
-    .autocomplete-container > div > div {
-      padding: 8px 0;
-      cursor: pointer;
-    }
-  </style>
 </head>
-<body>
-  <div class="container">
-  <div class="row">
-    <div class="well col-md-6">
-      <div class="page-header">
-        <h1>ng2-address</h1>
-      </div>
 
-        <div class="form-group label-floating">
-          <label class="control-label">Country</label>
-          <select [(ngModel)]="country" (ngModelChange)="country = $event; address = null;" class="form-control">
-            <option value="DE">Germany</option>
-            <option value="NL">Netherlands</option>
-            <option value="SE">Sweden</option>
-            <option value="DK">Denmark</option>
-          </select>
-        </div>
-        <div class="form-group label-floating">
-          <label class="control-label">Address</label>
-          <ng2-address-autocomplete
-            [country]="country"
-            [placeholderStreet]="'SnappCar Street 6...'"
-            [placeholderHouseNumber]="'housenumber...'"
-            [placeholderPostalCode]="'postalcode...'"
-            [address]="address"
-            (onAddress)="address = $event">
-          </ng2-address-autocomplete>
-        </div>
-    </div>
-  </div>
-  <div class="row">
-    <div *ngIf="address" class="well col-md-6">
-      <div class="row">
-        <div class="col-sm-1">
-          <h1><i class="material-icons">place</i></h1>
-        </div>
-        <div class="col-sm-11">
-          <h4>
-          {{address.street}} {{address.houseNumber}}<br>
-          {{address.postalCode}} {{address.city}}<br>
-          {{address.country}}
-        </h4>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<body>
+  <example></example>
+</body>
+
 </html>

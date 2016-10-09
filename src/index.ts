@@ -1,2 +1,3 @@
+// Entry point for export to lib: $ gulp
 export * from './address-autocomplete.component';
-export * from './ng2-address';
+export * from './address-auto-completer.module';

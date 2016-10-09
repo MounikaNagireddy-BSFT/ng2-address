@@ -1,10 +1,8 @@
-/// <reference path="../typings/globals/google.maps/index.d.ts" />
-import './polyfills.ts';
-
+// Entry point for example: $ ng serve
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
-// import { enableProdMode } from '@angular/core';
-import {AddressAutoCompleter} from './ng2-address';
+import {enableProdMode} from '@angular/core';
+import './polyfills.ts';
+import {Example} from './example.module';
 
-// enableProdMode();
-
-platformBrowserDynamic().bootstrapModule(AddressAutoCompleter);
+enableProdMode();
+platformBrowserDynamic().bootstrapModule(Example);
