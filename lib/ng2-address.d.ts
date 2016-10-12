@@ -1,3 +1,4 @@
+/// <reference path="../typings/globals/google.maps/index.d.ts" />
 declare module "place-suggestion" {
     export class PlaceSuggestion {
         id: string;
@@ -66,19 +67,11 @@ declare module "google-places-autocomplete.service" {
         private parseGooglePlaceResult(placeResult);
     }
 }
-declare module "focus-directive" {
-    import { ElementRef } from 'angular2/core';
-    export class FocusDirective {
-        private el;
-        constructor(el: ElementRef);
-        ngAfterViewInit(): void;
-    }
-}
-declare module "address-autocomplete.component" {
-    import { EventEmitter } from 'angular2/core';
+declare module "address-autocompleter.component" {
+    import { EventEmitter, OnChanges, OnInit, SimpleChanges } from '@angular/core';
     import { GooglePlacesAutocompleteService } from "google-places-autocomplete.service";
     import { Address } from "address";
-    export class AddressAutocompleteComponent {
+    export class AddressAutocompleterComponent implements OnInit, OnChanges {
         onAddress: EventEmitter<Address>;
         placeholderStreet: string;
         placeholderHouseNumber: string;
@@ -92,9 +85,9 @@ declare module "address-autocomplete.component" {
         private manualHouseNumber;
         private manualPostalCode;
         constructor(autoCompleteService: GooglePlacesAutocompleteService);
-        private ngOnInit();
-        private ngOnChanges(changes);
-        private onKeyUp(keyCode, fieldStreet);
+        ngOnInit(): void;
+        ngOnChanges(changes: SimpleChanges): void;
+        onKeyUp(keyCode: number, fieldStreet: HTMLInputElement): void;
         private onChangeInput(str, inputField);
         private scrollToElement(element);
         /**
@@ -107,11 +100,15 @@ declare module "address-autocomplete.component" {
         private onBlurPostalCode(postalCode);
     }
 }
-declare module "ng2-address" {
-    export * from "address-autocomplete.component";
-    export * from "address";
-    export * from "autocomplete-service";
-    export * from "google-places-autocomplete.service";
-    export * from "place-details";
-    export * from "place-suggestion";
+declare module "focus-directive" {
+    import { AfterViewInit, ElementRef, Renderer } from '@angular/core';
+    export class FocusDirective implements AfterViewInit {
+        private el;
+        constructor(el: ElementRef, renderer: Renderer);
+        ngAfterViewInit(): void;
+    }
+}
+declare module "address-auto-completer.module" {
+    export class AddressAutoCompleter {
+    }
 }

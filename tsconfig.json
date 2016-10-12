@@ -9,8 +9,8 @@
     "outFile": "./lib/ng2-address.js"
   },
   "files": [
-    "./typings/browser.d.ts",
-    "./src/ng2-address.ts"
+    "./typings/index.d.ts",
+    "./src/address-auto-completer.module.ts"
   ],
   "exclude": [
     "node_modules"

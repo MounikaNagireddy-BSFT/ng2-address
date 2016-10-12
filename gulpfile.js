@@ -41,9 +41,9 @@ gulp.task('connect', () => {
     livereload: true
   });
 
-  return gulp.src('./example/index.html')
+  return gulp.src('./example2/index.html')
     .pipe(open({
-      uri: 'http://localhost:8080/example'
+      uri: 'http://localhost:8080/example2'
     }));
 });
 

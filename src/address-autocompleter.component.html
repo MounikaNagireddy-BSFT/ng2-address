@@ -1,0 +1,38 @@
+<input #fieldStreet
+    [(ngModel)]="inputString"
+    [attr.placeholder]="placeholderStreet"
+    (blur)="onBlurStreet()" 
+    (keyup)="onKeyUp($event.keyCode, fieldStreet)" 
+    autocomplete="off" 
+    class="form-control" />
+
+<div *ngIf="suggestions && suggestions.length" class="autocomplete-container">
+    <div *ngFor="let suggestion of suggestions">
+        <div [class.selected]="suggestion === selectedSuggestion" 
+            (mouseover)="selectedSuggestion = suggestion" 
+            (click)="selectedSuggestion = suggestion">
+                {{suggestion}}
+        </div>
+    </div>
+</div>
+
+<input #fieldHouseNumber 
+    focusOnInit 
+    *ngIf="address" 
+    [class.hidden]="address.houseNumber && !manualHouseNumber" 
+    (keyup.enter)="fieldHouseNumber.blur()"
+    [attr.placeholder]="placeholderHouseNumber" 
+    (blur)="onBlurHouseNumber(fieldHouseNumber.value)"
+    [attr.placeholder]="placeholderHouseNumber" 
+    autocomplete="off" 
+    class="form-control" />
+
+<input #fieldPostalCode 
+    focusOnInit 
+    *ngIf="address && manualHouseNumber"  
+    [attr.placeholder]="placeholderPostalCode"
+    (keyup.enter)="fieldPostalCode.blur()" 
+    (blur)="onBlurPostalCode(fieldPostalCode.value)" 
+    [attr.placeholder]="placeholderPostalCode"
+    autocomplete="off" 
+    class="form-control" />
